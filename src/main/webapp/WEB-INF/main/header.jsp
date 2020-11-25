@@ -13,7 +13,7 @@
     </div>
 
     <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
+ <!--    <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__cart">
             <div class="offcanvas__cart__links">
@@ -46,7 +46,7 @@
                 <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- Offcanvas Menu End -->
     
     
@@ -59,32 +59,17 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li>USD <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>EUR</li>
-                                            <li>USD</li>
-                                        </ul>
-                                    </li>
-                                    <li>ENG <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>Spanish</li>
-                                            <li>ENG</li>
-                                        </ul>
-                                    </li>
                                     <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                	<li><a href="#">Log in</a> <span class="arrow_carrot-down"></span></li>
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="../main/main.do"><img src="../img/logo.png" alt=""></a>
+                                <a href="../main/main.do"><img src="../img/mrlogo.png" alt="" style="width: 30%"></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
                                     <a href="#" class="search-switch"><img src="../img/icon/search.png" alt=""></a>
                                     <a href="#"><img src="../img/icon/heart.png" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="../img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>$0.00</span></div>
                                 </div>
                             </div>
                         </div>
@@ -98,10 +83,11 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="../main/main.do">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="../main/main.do">MY냉장고</a></li>
+                            <li><a href="../recipe/list.do">레시피</a></li>
+                            <li><a href="#">맛집</a></li>
+                            <li><a href="#">추천</a></li>
+                            <li><a href="#">커뮤니티</a>
                                 <ul class="dropdown">
                                     <li><a href="#">Shop Details</a></li>
                                     <li><a href="#">Shoping Cart</a></li>
@@ -111,7 +97,6 @@
                                     <li><a href="#">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../recipe/list.do">Blog</a></li>
                             <li><a href="../fight/list.do">Contact</a></li>
                         </ul>
                     </nav>

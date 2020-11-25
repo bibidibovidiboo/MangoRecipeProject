@@ -24,7 +24,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="../img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="../img/logo-footer.png" alt="" style="width: 50%"></a>
                         </div>
                         <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore dolore magna aliqua.</p>
@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <p class="copyright__text text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                          <script>document.write(new Date().getFullYear());</script> 쌍용강북교육센터 G강의장&nbsp;|&nbsp;<a href="https://github.com/SIST-Team3-Spring-Project/MangoRecipeProject" target="_blank">github 바로가기</a>
                           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                       </p>
                   </div>
