@@ -5,6 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.header__logo {
+    left: 47%;
+    top: 22px;
+    width: 210px;
+}
+</style>
 </head>
 <body>
     <!-- Page Preloder -->
@@ -60,11 +67,11 @@
                             <div class="header__top__left">
                                 <ul>
                                     <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
-                                	<li><a href="#">Log in</a> <span class="arrow_carrot-down"></span></li>
+                                	<li><a href="../community/login.do">Login</a> <span class="arrow_carrot-down"></span></li>
                                 </ul>
                             </div>
-                            <div class="header__logo">
-                                <a href="../main/main.do"><img src="../img/mrlogo.png" alt="" style="width: 30%"></a>
+                             <div class="header__logo">
+                                <a href="../main/main.do"><img src="../img/logo2.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
@@ -87,16 +94,7 @@
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="#">맛집</a></li>
                             <li><a href="#">추천</a></li>
-                            <li><a href="#">커뮤니티</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Shop Details</a></li>
-                                    <li><a href="#">Shoping Cart</a></li>
-                                    <li><a href="#">Check Out</a></li>
-                                    <li><a href="#">Wisslist</a></li>
-                                    <li><a href="#">Class</a></li>
-                                    <li><a href="#">Blog Details</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="../community/list.do">커뮤니티</a></li>
                             <li><a href="../fight/list.do">Contact</a></li>
                         </ul>
                     </nav>

@@ -23,9 +23,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__logo">
+                        <!-- <div class="footer__logo">
                             <a href="#"><img src="../img/logo-footer.png" alt="" style="width: 50%"></a>
-                        </div>
+                        </div> -->
                         <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore dolore magna aliqua.</p>
                         <div class="footer__social">

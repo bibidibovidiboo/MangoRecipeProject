@@ -12,8 +12,15 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<context:component-scan base-package="com.sist.*"/>
-	
+	<bean id="dbcon"
+        class="com.sist.dao.DBConnection"
+        c:driver="oracle.jdbc.driver.OracleDriver"
+        c:url="jdbc:oracle:thin:@211.238.142.186:1521:XE"
+        c:username="hr"
+        c:password="happy"
+     />
 	<mvc:annotation-driven/>
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
        p:driverClassName="oracle.jdbc.driver.OracleDriver"
