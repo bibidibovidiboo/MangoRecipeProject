@@ -1,5 +1,9 @@
 import React from 'react'
 
+import {
+    Link
+} from "react-router-dom";
+
 function Header() {
     return (
         <div>
@@ -11,8 +15,8 @@ function Header() {
                                 <div className="header__top__inner">
                                     <div className="header__top__left">
                                         <ul>
-                                            <li><a href="#">Sign in</a> <span className="arrow_carrot-down"></span></li>
-                                            <li><a href="#">Log in</a> <span className="arrow_carrot-down"></span></li>
+                                            <li><Link to='/page/SignUp'>회원가입</Link></li>
+                                            <li><Link to='/page/Login'>로그인</Link></li>
                                         </ul>
                                     </div>
                                     <div className="header__logo">
@@ -35,11 +39,11 @@ function Header() {
                         <div className="col-lg-12">
                             <nav className="header__menu mobile-menu">
                                 <ul>
-                                    <li><a href="../main/main.do">MY냉장고</a></li>
-                                    <li><a href="../recipe/list.do">레시피</a></li>
-                                    <li><a href="#">맛집</a></li>
-                                    <li><a href="#">추천</a></li>
-                                    <li><a href="#">커뮤니티</a>
+                                    <li><Link to='/page/MyRefriger'>MY냉장고</Link></li>
+                                    <li><Link to='/page/recipe'>레시피</Link></li>
+                                    <li><Link to='/page/restaurant'>맛집</Link></li>
+                                    <li><Link to='/page/recommand'>추천</Link></li>
+                                    <li><Link to='/page/community'>커뮤니티</Link>
                                         <ul className="dropdown">
                                             <li><a href="#">Shop Details</a></li>
                                             <li><a href="#">Shoping Cart</a></li>
@@ -49,7 +53,7 @@ function Header() {
                                             <li><a href="#">Blog Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../fight/list.do">Contact</a></li>
+                                    <li><Link to='/page/contact'>Contact</Link></li>
                                 </ul>
                             </nav>
                         </div>
