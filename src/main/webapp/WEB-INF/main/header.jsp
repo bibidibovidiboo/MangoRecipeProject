@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,12 +67,27 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
-                                	<li><a href="../community/login.do">Login</a> <span class="arrow_carrot-down"></span></li>
+                                    <li><a href="#">Login/out</a> <span class="arrow_carrot-down"></span>
+                                     	<ul>
+                                     		<c:choose>
+                                     		<c:when test="${id==null }">
+                                     			<li data-toggle="modal" data-target="#myModal">Login</li>
+                                     			<li>회원가입</li>
+                                     		</c:when>
+                                     		<c:when test="${id!=null }">
+                                     		<li>Logout</li>
+                                            </c:when>
+                                            </c:choose>
+                                        </ul>
+                                        
+                                    </li>
+                                    <c:if test="${id!=null }">
+	                                 	&nbsp;<span style="font-size:9.5pt"> ${id }님, 안녕하세요!</span>
+	                            	</c:if>
                                 </ul>
                             </div>
                              <div class="header__logo">
-                                <a href="../main/main.do"><img src="../img/logo2.png" alt=""></a>
+                                <a href="../main/main.do"><img src="../img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
