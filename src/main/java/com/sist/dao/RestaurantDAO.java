@@ -17,4 +17,6 @@ public class RestaurantDAO {
 	{
 		return mapper.restaurantDetailData(no);
 	}
+
+
 }
