@@ -1,4 +1,4 @@
-package com.sist.dao;
+package com.sist.vo;
 /*no NUMBER, 
 res_cno NUMBER, 
 res_title VARCHAR2(100),

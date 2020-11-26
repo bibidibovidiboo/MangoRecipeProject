@@ -1,4 +1,4 @@
-package com.sist.dao;
+package com.sist.common;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

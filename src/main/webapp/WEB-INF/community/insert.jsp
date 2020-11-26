@@ -9,7 +9,7 @@
 .w-box {
 	padding: 70px 0;
 	margin: 0px auto;
-   	width: 510px;
+   	width: 700px;
 }
 </style>
 </head>

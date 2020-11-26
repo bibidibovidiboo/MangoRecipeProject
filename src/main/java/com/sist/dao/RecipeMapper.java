@@ -15,6 +15,8 @@ import java.util.*;
  */
 
 import org.apache.ibatis.annotations.Select;
+
+import com.sist.vo.RecipeVO;
 public interface RecipeMapper {
 	/*@Select("SELECT * "
 			+ "FROM recipe_table "

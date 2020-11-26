@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 let i=0;
@@ -30,31 +31,38 @@ $(function(){
 });
 </script>
 <style type="text/css">
-.detail-box {
-	margin-top: 55px;
+ .detail-box {
+	margin-top: 63px;
+    padding: 0 120px;
+}
+.reply-box {
+	margin: 0 0 50px 100px;
+}
+.header__menu {
+	margin-bottom: -10px;
 }
 </style>
 </head>
 <body>
    <div class="container">
      <div class="row detail-box">
-      <table class="table table-striped">
+      <table class="table">
         <tr>
-          <th width=20% class="text-center danger">번호</th>
+          <th width=20% class="text-center active">번호</th>
           <td width=30% class="text-center">${vo.no }</td>
-          <th width=20% class="text-center danger">작성일</th>
+          <th width=20% class="text-center active">작성일</th>
           <td width=30% class="text-center"> 
             <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
           </td>
         </tr>
         <tr>
-          <th width=20% class="text-center danger">이름</th>
+          <th width=20% class="text-center active">이름</th>
           <td width=30% class="text-center">${vo.name }</td>
-          <th width=20% class="text-center danger">조회수</th>
+          <th width=20% class="text-center active">조회수</th>
           <td width=30% class="text-center">${vo.hit }</td>
         </tr>
         <tr>
-          <th width=20% class="text-center danger">제목</th>
+          <th width=20% class="text-center active">제목</th>
           <td colspan="3" class="text-left">${vo.subject }</td>
         </tr>
         
@@ -65,8 +73,8 @@ $(function(){
         </tr>
         <tr>
           <td colspan="4" class="text-right">
-            <a href="update.do?no=${vo.no }" class="btn btn-sm btn-success">수정</a>
-            <a href="delete.do?no=${vo.no }" class="btn btn-sm btn-info">삭제</a>
+            <a href="update.do?no=${vo.no }" class="btn btn-sm btn-warning">수정</a>
+            <a href="delete.do?no=${vo.no }" class="btn btn-sm btn-warning">삭제</a>
             <a href="list.do" class="btn btn-sm btn-warning">목록</a>
           </td>
         </tr>
@@ -74,7 +82,7 @@ $(function(){
      </div>
      <div class="row">
        <%-- 분석 결과 출력  --%>
-       <div class="col-sm-6">
+       <div class="col-sm-6  reply-box">
        
         <table class="table">
          <tr>
@@ -83,12 +91,12 @@ $(function(){
              <table class="table">
               <tr>
                 <td class="text-left">
-                               ◐${rvo.name }(${rvo.dbday})
+                   ${rvo.name }(${rvo.dbday})
                 </td>
                 <td class="text-right">
                   <c:if test="${sessionScope.id==rvo.id }">
                     <span class="btn btn-xs btn-success upBtn" data-no="${rvo.no }">수정</span>
-                    <a href="reply_delete.do?no=${rvo.no }&cno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
+                    <a href="reply_delete.do?no=${rvo.no }&cno=${vo.no}" class="btn btn-xs btn-success">삭제</a>
                   </c:if>
                 </td>
               </tr>
@@ -104,7 +112,7 @@ $(function(){
 		            <input type=hidden name=no value=${rvo.no }>
 		            <textarea rows="3" cols="45" style="float: left" name=msg>${rvo.msg }</textarea>
 		            <input type=submit value="댓글수정"
-		              class="btn btn-sm btn-danger" style="height:65px;float: left">
+		              class="btn btn-sm btn-warning" style="height:65px;float: left">
 		            </form>
 		          </td>
 		         </tr>
@@ -118,7 +126,7 @@ $(function(){
             <input type=hidden name=cno value=${vo.no }>
             <textarea rows="3" cols="45" style="float: left" name=msg></textarea>
             <input type=submit value="댓글쓰기"
-              class="btn btn-sm btn-danger" style="height:65px;float: left">
+              class="btn btn-sm btn-warning" style="height:65px;float: left">
             </form>
           </td>
          </tr>

@@ -2,6 +2,7 @@ package com.sist.web;
 import java.util.*;
 
 import com.sist.dao.*;
+import com.sist.vo.RestaurantVO;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.sist.dao.RestaurantDAO;
-import com.sist.dao.RestaurantVO;
 
 @Controller
 public class RestaurantController {
