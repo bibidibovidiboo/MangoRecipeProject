@@ -1,3 +1,4 @@
+/*
 package com.sist.web;
 
 import java.text.SimpleDateFormat;
@@ -240,3 +241,4 @@ public class ReserveController {
 		return "redirect:../reserve/adminpage.do";
 	}
 }
+*/

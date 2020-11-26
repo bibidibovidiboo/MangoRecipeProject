@@ -114,7 +114,7 @@ public class CBoardController {
    }
    
    // 로그인 
-   @RequestMapping("login.do")
+   /*@RequestMapping("login.do")
    public String board_login()
    {
 	   return "community/login";
@@ -131,6 +131,6 @@ public class CBoardController {
 	   }
 	   model.addAttribute("msg", vo.getMessage());
 	   return "community/login_ok";
-   }
+   }*/
    
 }
