@@ -7,10 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import com.sist.controller.RequestMapping;
 import com.sist.dao.MovieDAO;
 import com.sist.vo.JjimVO;
