@@ -109,7 +109,13 @@
                             <li><a href="../main/main.do">MY냉장고</a></li>
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
-                            <li><a href="../recommand/weather_list.do">추천</a></li>
+                            <li><a href="../recommand/weather_list.do">추천</a>
+                            	<ul class="dropdown">
+                                    <li><a href="../recommand/weather_list.do">오늘의 요리</a></li>
+                                    <li><a href="../recommand/master.do">전문가's</a></li>
+                                    <li><a href="../recommand/tag.do">태그</a></li>
+                                </ul>
+                            </li>
                             <li><a href="../community/list.do">커뮤니티</a></li>
                             <li><a href="../fight/list.do">Contact</a></li>
                         </ul>

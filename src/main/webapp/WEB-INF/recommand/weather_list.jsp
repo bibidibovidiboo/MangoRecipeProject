@@ -22,7 +22,7 @@
   <!-- Wishlist Section Begin -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-12" style="margin-bottom: 50px;">
+                <div class="col-lg-8" style="margin-bottom: 50px;">
                     <div class="wishlist__cart__table">
                         <table>
                             <tbody>
@@ -32,8 +32,8 @@
                                         <div class="product__cart__item__pic">
                                             <img src="${vo.img }" style="width: 100px; height: 100px;">
                                         </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>${vo.title}</h6>
+                                        <div class="product__item__text" style="text-align: left;">
+                                            <h6><a href="weather_detail.do?rno=${vo.rno }">${vo.title }</a></h6>
                                         </div>
                                     </td>
                                 </tr>

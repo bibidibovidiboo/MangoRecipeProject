@@ -44,4 +44,11 @@ public class RecommandController {
       model.addAttribute("wd", wd);
       return "recommand/weather_list";
    }
+   
+   @RequestMapping("weather_detail.do")
+	public String recipe_detial(int rno,Model model){
+		RecipeVO vo=wdao.weatherDetailData(rno);
+		model.addAttribute("vo",vo);
+		return "recommand/weather_detail";
+	}
 }

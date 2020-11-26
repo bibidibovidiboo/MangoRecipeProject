@@ -13,4 +13,8 @@ public class RecommandDAO {
 		  return mapper.foodLikeRecipeData(finddata);
 	  }
 	  
+	  public RecipeVO weatherDetailData(int rno){
+			
+			return mapper.weatherDetailData(rno);
+		}
 	}
