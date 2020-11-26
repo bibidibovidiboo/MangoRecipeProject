@@ -20,7 +20,7 @@ function Header() {
                                         </ul>
                                     </div>
                                     <div className="header__logo">
-                                        <a href="../main/main.do"><img src="../img/mrlogo.png" alt="" style={{ width: '30%' }} /></a>
+                                        <Link to='/'><img src="../img/mrlogo.png" alt="" style={{ width: '30%' }} /></Link>
                                     </div>
                                     <div className="header__top__right">
                                         <div className="header__top__right__links">
