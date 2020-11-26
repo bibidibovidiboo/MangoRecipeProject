@@ -93,7 +93,7 @@
                             <li><a href="../main/main.do">MY냉장고</a></li>
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
-                            <li><a href="#">추천</a></li>
+                            <li><a href="../recommand/weather_list.do">추천</a></li>
                             <li><a href="../community/list.do">커뮤니티</a></li>
                             <li><a href="../fight/list.do">Contact</a></li>
                         </ul>
