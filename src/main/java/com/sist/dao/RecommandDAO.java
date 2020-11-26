@@ -10,11 +10,12 @@ public class RecommandDAO {
 	  private RecommandMapper mapper;
 	  public List<RecipeVO> foodLikeRecipeData(String finddata)
 	  {
+		  
 		  return mapper.foodLikeRecipeData(finddata);
 	  }
 	  
-	  public RecipeVO weatherDetailData(int rno){
-			
-			return mapper.weatherDetailData(rno);
-		}
+	  public RecipeVO weatherDetailData(int rno)
+	  {
+		  return mapper.weatherDetailData(rno);
+	  }
 	}

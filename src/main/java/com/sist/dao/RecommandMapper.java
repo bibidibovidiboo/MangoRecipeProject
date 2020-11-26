@@ -12,5 +12,5 @@ public interface RecommandMapper {
   
   @Select("SELECT * FROM recipe_table WHERE rno=#{rno}")
 	public RecipeVO weatherDetailData(int rno);
-	
+  
 }

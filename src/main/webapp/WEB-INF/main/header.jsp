@@ -112,8 +112,7 @@
                             <li><a href="../recommand/weather_list.do">추천</a>
                             	<ul class="dropdown">
                                     <li><a href="../recommand/weather_list.do">오늘의 요리</a></li>
-                                    <li><a href="../recommand/master.do">전문가's</a></li>
-                                    <li><a href="../recommand/tag.do">태그</a></li>
+                                    <li><a href="../recommand/tag_list.do">태그</a></li>
                                 </ul>
                             </li>
                             <li><a href="../community/list.do">커뮤니티</a></li>
