@@ -111,7 +111,7 @@
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="#">추천</a></li>
                             <li><a href="../community/list.do">커뮤니티</a></li>
-                            <li><a href="../fight/list.do">Contact</a></li>
+                            <li><a href="../shopping/list.do">최저가</a></li>
                         </ul>
                     </nav>
                 </div>
