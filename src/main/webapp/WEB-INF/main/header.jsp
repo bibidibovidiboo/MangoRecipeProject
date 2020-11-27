@@ -12,6 +12,9 @@
     top: 22px;
     width: 210px;
 }
+.header__menu ul li a {
+	font-weight: 400;
+}
 </style>
 </head>
 <body>
