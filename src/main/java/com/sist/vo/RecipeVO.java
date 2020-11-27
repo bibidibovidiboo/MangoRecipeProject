@@ -1,4 +1,4 @@
-package com.sist.dao;
+package com.sist.vo;
 
 public class RecipeVO {
 	private int rno;
