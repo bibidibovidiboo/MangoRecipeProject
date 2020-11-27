@@ -1,7 +1,9 @@
 package com.sist.dao;
 import java.util.*;
+
 /*
  * private int rno;
+
 	private int cno;
 	private String title;
 	private String chef;

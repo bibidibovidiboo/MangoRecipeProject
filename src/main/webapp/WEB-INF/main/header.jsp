@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.header__logo {
+    left: 47%;
+    top: 22px;
+    width: 210px;
+}
+</style>
 </head>
 <body>
     <!-- Page Preloder -->
@@ -59,12 +67,27 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
-                                	<li><a href="#">Log in</a> <span class="arrow_carrot-down"></span></li>
+                                    <li><a href="#">Login/out</a> <span class="arrow_carrot-down"></span>
+                                     	<ul>
+                                     		<c:choose>
+                                     		<c:when test="${id==null }">
+                                     			<li data-toggle="modal" data-target="#myModal">Login</li>
+                                     			<li>회원가입</li>
+                                     		</c:when>
+                                     		<c:when test="${id!=null }">
+                                     		<li>Logout</li>
+                                            </c:when>
+                                            </c:choose>
+                                        </ul>
+                                        
+                                    </li>
+                                    <c:if test="${id!=null }">
+	                                 	&nbsp;<span style="font-size:9.5pt"> ${id }님, 안녕하세요!</span>
+	                            	</c:if>
                                 </ul>
                             </div>
-                            <div class="header__logo">
-                                <a href="../main/main.do"><img src="../img/mrlogo.png" alt="" style="width: 30%"></a>
+                             <div class="header__logo">
+                                <a href="../main/main.do"><img src="../img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
@@ -85,19 +108,15 @@
                         <ul>
                             <li><a href="../main/main.do">MY냉장고</a></li>
                             <li><a href="../recipe/list.do">레시피</a></li>
-                            <li><a href="#">맛집</a></li>
-                            <li><a href="#">추천</a></li>
-                            <li><a href="#">커뮤니티</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Shop Details</a></li>
-                                    <li><a href="#">Shoping Cart</a></li>
-                                    <li><a href="#">Check Out</a></li>
-                                    <li><a href="#">Wisslist</a></li>
-                                    <li><a href="#">Class</a></li>
-                                    <li><a href="#">Blog Details</a></li>
+                            <li><a href="../restaurant/resList.do">맛집</a></li>
+                            <li><a href="../recommand/weather_list.do">추천</a>
+                            	<ul class="dropdown">
+                                    <li><a href="../recommand/weather_list.do">오늘의 요리</a></li>
+                                    <li><a href="../recommand/tag_list.do">태그</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../fight/list.do">Contact</a></li>
+                            <li><a href="../community/list.do">커뮤니티</a></li>
+                            <li><a href="../shopping/list.do">최저가</a></li>
                         </ul>
                     </nav>
                 </div>
