@@ -57,6 +57,12 @@
         p:mapperInterface="com.sist.dao.RecommandMapper"
         p:sqlSessionFactory-ref="ssf"
         />
+        
+        <bean id="mapper5"
+        class="org.mybatis.spring.mapper.MapperFactoryBean"
+        p:mapperInterface="com.sist.mapper.FridgeMapper"
+        p:sqlSessionFactory-ref="ssf"
+        />
 	
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
