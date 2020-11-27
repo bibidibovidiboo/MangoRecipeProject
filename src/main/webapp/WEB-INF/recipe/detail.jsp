@@ -34,33 +34,50 @@
                             <li>난이도: <span>${vo.lvl }</span></li>
                         </ul>
                         <div class="product__details__option">
-                            <div class="quantity">
+                            <!-- <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" value="2">
                                 </div>
-                            </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
+                            </div> -->
+                            
                             <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product__details__tab">
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
-                        </li> -->
-                    </ul>
+            <hr>
+            
+                    <h3>관련 맛집 목록</h3>
+                    
+                    <!-- ========== -->
+                    <div class="row">
+                    <c:forEach var="vo" items="${rlist }">
+                <div class="col-lg-2">
+                    <div class="product__details__img">
+                        <div class="product__details__big__img">
+                        
+                            <img class="big_img" src=${vo.img } alt="">
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__details__text">
+                       
+                        <h4>ㅈㅂㄷㅂㅈㄷ${vo.title }</h4>
+                       
+                        
+                        </div>
+                    </div>
+                    
+                    </c:forEach>
                     
                 </div>
             </div>
+            <br>
+                    <!-- ========== -->
+                    
+             
         </div>
     </section>
     <!-- Shop Details Section End -->

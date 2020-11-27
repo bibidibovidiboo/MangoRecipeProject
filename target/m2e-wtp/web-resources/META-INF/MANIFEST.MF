@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< Updated upstream
 Built-By: sooda
 Build-Jdk: 1.8.0_251
+=======
+Built-By: jju72
+Build-Jdk: 1.8.0_261
+>>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 

@@ -1,6 +1,6 @@
 package com.sist.dao;
 import java.util.*;
-
+import com.sist.vo.*;
 /*
  * private int rno;
 
@@ -39,6 +39,11 @@ public interface RecipeMapper {
 			+ "WHERE rno=#{rno}")
 	public RecipeVO recipeDetailData(int rno);
 	
+	@Select("SELECT no,cateno,title,poster,price,rownum "
+			+ "FROM restaurant_data "
+			+ "WHERE rownum<=5")
+			// SELECT distinct r.no,r.title,r.cateno,r.poster FROM restaurant_data r,recipe_table p WHERE r.cateno=p.cno;
+	public RestaurantVO LikeRecipeData(int cateno);
+	
 	
 }
-	

@@ -1,6 +1,6 @@
 package com.sist.web;
 import java.util.*;
-
+import com.sist.vo.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,6 +78,7 @@ public class RecipeController {
 	@RequestMapping("recipe/detail.do")
 	public String recipe_detial(int rno,Model model){
 		RecipeVO vo=dao.recipeDetailData(rno);
+		
 		model.addAttribute("vo",vo);
 		return "recipe/detail";
 	}
