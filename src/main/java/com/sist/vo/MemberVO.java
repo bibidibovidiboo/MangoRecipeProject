@@ -1,6 +1,7 @@
 package com.sist.vo;
 
 public class MemberVO {
+
     private String id;
     private String pwd;
     private String name;

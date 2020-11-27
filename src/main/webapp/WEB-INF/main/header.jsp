@@ -75,15 +75,16 @@
                                      			<li>회원가입</li>
                                      		</c:when>
                                      		<c:when test="${id!=null }">
+                                     		<a href="../main/logout.do"><li>Logout</li></a>
                                      		<li>Logout</li>
                                             </c:when>
                                             </c:choose>
                                         </ul>
                                         
                                     </li>
-                                    <c:if test="${id!=null }">
+                                    <c:if test="${sessionScope.id!=null }">
 	                                 	&nbsp;<span style="font-size:9.5pt"> ${id }님, 안녕하세요!</span>
-	                            	</c:if>
+	                            	  </c:if>
                                 </ul>
                             </div>
                              <div class="header__logo">
@@ -106,7 +107,8 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="../main/main.do">MY냉장고</a></li>
+                            <li><a href="../main/main.do">HOME</a></li>
+                            <li><a href="../fridge/fridge_main.do">MY냉장고</a></li>
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="../recommand/weather_list.do">추천</a>

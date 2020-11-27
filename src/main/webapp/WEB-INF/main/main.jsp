@@ -53,7 +53,7 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/jquery.nicescroll.min.js"></script>
 <script src="../js/main.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
     <script type="text/javascript">
     $(function(){
     	$('#logBtn').click(function(){
@@ -95,10 +95,11 @@
     				{
     					alert("로그인 되었습니다");
     					$('#myModal').modal("hide");
+    					location.href="../main/main.do";
     					$('#id').val("");
     					$('#pwd').val("");
     					$('#result').text("");
-    					return false;
+
     				}
     					
     			}
