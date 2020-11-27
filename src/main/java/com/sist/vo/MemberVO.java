@@ -11,6 +11,14 @@ public class MemberVO {
 	private String add2;
 	private String tel;
 	private String content;
+	private String message;
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public String getId() {
 		return id;
 	}

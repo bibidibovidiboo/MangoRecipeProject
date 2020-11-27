@@ -43,7 +43,11 @@
         p:mapperInterface="com.sist.dao.RestaurantMapper"
         p:sqlSessionFactory-ref="ssf"
       />
-	
+	<bean id="mapper3"
+        class="org.mybatis.spring.mapper.MapperFactoryBean"
+        p:mapperInterface="com.sist.mapper.FridgeMapper"
+        p:sqlSessionFactory-ref="ssf"
+      />
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
 		p:requestContextAttribute="requestContext"
