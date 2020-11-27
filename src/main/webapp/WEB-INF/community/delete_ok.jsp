@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:choose>
   <c:when test="${bCheck==true }">
-    <c:redirect url="list.do"/>
+    <c:redirect url="main.do"/>
   </c:when>
   <c:otherwise>
     <script>

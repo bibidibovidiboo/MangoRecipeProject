@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 .title {
-	font-size: 32px;
-	margin: 32px auto;
+	font-size: 31px;
+    margin: 36px auto 24px;
 }
 .c-box {
 	padding: 40px 0 65px;
@@ -20,6 +20,15 @@
     background-color: #f08632;
     border-color: #f08632;
 	margin-top: 15px;
+}
+.table-row {
+	background-color: #f3f3f3;
+}
+a {
+	color: #222;
+}
+a:hover {
+	color: #f08632;
 }
 </style>
 </head>
@@ -34,8 +43,8 @@
            </td>
          </tr>
        </table>
-       <table class="table table-striped">
-         <tr class="warning">
+       <table class="table">
+         <tr class="table-row">
            <th class="text-center" width=10%>번호</th>
            <th class="text-center" width=45%>제목</th>
            <th class="text-center" width=15%>이름</th>

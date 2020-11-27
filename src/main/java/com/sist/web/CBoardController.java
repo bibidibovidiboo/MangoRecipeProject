@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.sist.vo.*;
 import com.sist.dao.*;
 
 @Controller
@@ -114,7 +114,7 @@ public class CBoardController {
    }
    
    // 로그인 
-   @RequestMapping("login.do")
+   /*@RequestMapping("login.do")
    public String board_login()
    {
 	   return "community/login";
@@ -123,7 +123,7 @@ public class CBoardController {
    @RequestMapping("login_ok.do")
    public String board_login_ok(String id,String pwd,Model model,HttpSession session)
    {
-	   MemberVO vo=dao.memberLogin(id, pwd);
+	  MemberVO vo=dao.memberLogin(id, pwd);
 	   if(vo.getMessage().equals("OK"))
 	   {
 		   session.setAttribute("id", id);
@@ -131,6 +131,6 @@ public class CBoardController {
 	   }
 	   model.addAttribute("msg", vo.getMessage());
 	   return "community/login_ok";
-   }
+   }*/
    
 }
