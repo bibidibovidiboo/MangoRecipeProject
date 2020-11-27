@@ -1,4 +1,4 @@
-package com.sist.dao;
+package com.sist.vo;
 public class RestaurantVO {
 	   private int no;
 	   private int cateno;

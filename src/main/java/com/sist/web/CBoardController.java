@@ -113,7 +113,6 @@ public class CBoardController {
 	   return "redirect:detail.do?no="+cno;
    }
    
-<<<<<<< Updated upstream
    // 로그인 
    /*@RequestMapping("login.do")
    public String board_login()
@@ -134,6 +133,4 @@ public class CBoardController {
 	   return "community/login_ok";
    }*/
    
-=======
->>>>>>> Stashed changes
 }

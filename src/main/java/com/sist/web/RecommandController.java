@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 import com.sist.dao.*;
+import com.sist.vo.RecipeVO;
 
 @Controller
 @RequestMapping("recommand/")
