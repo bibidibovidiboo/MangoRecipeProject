@@ -4,7 +4,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sist.vo.ShoppingVO;
+import com.sist.vo.*;
 
 @Repository
 public class ShoppingDAO {
@@ -29,4 +29,19 @@ public class ShoppingDAO {
 	{
 		return mapper.shoppingTotalPage();
 	}
+	
+	//카테고리별 데이터
+	public List<ShoppingVO> shoppingCateDate(String name)
+	{
+		return mapper.shoppingCateDate(name);
+	}
+
+	
+	//상세보기 레시피 5개 출력
+	public List<RecipeVO> shoppingRecipeData(String category3)
+	{
+		return mapper.shoppingRecipeData(category3);
+	}
+	
+	
 }

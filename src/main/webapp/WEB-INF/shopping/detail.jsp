@@ -102,24 +102,32 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <div class="product__label">${vo.category3}</div>
-                        <h4>${vo.title}</h4>
+                        <div class="product__label">${vo.category3}</div><br>
+                        <td> ${vo.category1 } | ${vo.category2 } | ${vo.category4 }</td>
+                        <a href="${vo.link }"><h4>${vo.title}</h4></a>
                         <h5>${vo.lprice }원</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
-                        <ul>
-                            <li>대분류: <span>${vo.category1}</span></li>
-                            <li>중분류: <span>${vo.category2}</span></li>
-                            <li>소분류: <span>${vo.category4}</span></li>
-                        </ul>
-                        <div class="product__details__option">
+                            <table class="table">
+                            <h5>이런 요리 어떠세요?</h5>
+                            <c:forEach var="vo" items="${rList }">
+                            	<tr>
+                            		<td>
+                            			<img src="${vo.img }" width=50px height=50px>
+                            		</td>
+                            		<td>
+                            			<h3 style="font-size:10pt">${vo.title }</h3>
+                            		</td>
+                            	</tr>
+                            </c:forEach>
+                            </table>
+                        <!-- <div class="product__details__option">
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" value="2">
                                 </div>
-                            </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
-                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+                            </div> -->
+                        
+                            <!-- <a href="#" class="primary-btn">Add to cart</a>
+                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a> -->
                         </div>
                     </div>
                 </div>

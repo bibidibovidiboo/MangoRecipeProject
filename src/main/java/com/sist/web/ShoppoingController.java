@@ -1,7 +1,7 @@
 package com.sist.web;
 import java.util.*;
 import com.sist.dao.*;
-import com.sist.vo.ShoppingVO;
+import com.sist.vo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,8 @@ public class ShoppoingController {
 	@Autowired
 	private ShoppingDAO dao;
 	
+	//@Autowired
+	//private RecipeDAO rdao;
 	
 	// 가격 리스트
 	@RequestMapping("list.do")
@@ -43,12 +45,30 @@ public class ShoppoingController {
 	
 	// 상세보기
 	@RequestMapping("detail.do")
-	public String shopping_detail(int no,Model model)
+	public String shopping_detail(int no,String category3,String title,Model model)
 	{
+		System.out.println("category3"+category3);
 		ShoppingVO vo=dao.shoppingDetailData(no);
+		//상세보기 레시피데이터
+		List<RecipeVO> rList=dao.shoppingRecipeData(category3);
+		model.addAttribute("rList",rList);
 		model.addAttribute("vo",vo);
 		return "shopping/detail";
 	}
+	
+	
+	//카테고리 분류
+	@RequestMapping("cate.do")
+	public List<ShoppingVO> shopping_cate(String name)
+	{
+		List<ShoppingVO> list = dao.shoppingCateDate(name);
+		
+		return list;	
+	}
+	
+
+	
+	
 	
 	
 	
