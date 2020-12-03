@@ -7,17 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.header__logo {
-    left: 47%;
-    top: 13px;
-    width: 210px;
+.header {
+	background-color: #fff;
 }
-.header__menu ul li a {
-    font-weight: 400;
+.header__top {
+    background: #faa741;
 }
 .header__top__inner {
-    height: 84px;
-    padding-top: 25px;
+    height: 0px;
+    padding-top: 0px
+}
+.header__top__left {
+	float: right;
+}
+.header__top__left ul li span {
+	color: #fff;
+}
+.header__menu ul li a {
+	color: #2d2d2d;
+	font-weight: 400;
+	font-size: 15px;
+}
+.header__top__left ul li a {
+	color: #fff;
+}
+.mango_logo img {
+	width: 160px;
+    margin-top: 8px;
 }
 </style>
 </head>
@@ -27,42 +43,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Begin -->
- <!--    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__cart">
-            <div class="offcanvas__cart__links">
-                <a href="#" class="search-switch"><img src="../img/icon/search.png" alt=""></a>
-                <a href="#"><img src="../img/icon/heart.png" alt=""></a>
-            </div>
-            <div class="offcanvas__cart__item">
-                <a href="#"><img src="../img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Cart: <span>$0.00</span></div>
-            </div>
-        </div>
-        <div class="offcanvas__logo">
-            <a href="#"><img src="../img/logo.png"></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__option">
-            <ul>
-                <li>USD <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>EUR</li>
-                        <li>USD</li>
-                    </ul>
-                </li>
-                <li>ENG <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>Spanish</li>
-                        <li>ENG</li>
-                    </ul>
-                </li>
-                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
-            </ul>
-        </div>
-    </div> -->
-    <!-- Offcanvas Menu End -->
+
     
     
     <!-- Header Section Begin -->
@@ -94,7 +75,7 @@
 	                            	  </c:if>
                                 </ul>
                             </div>
-                             <div class="header__logo">
+                            <!--  <div class="header__logo">
                                 <a href="../main/main.do"><img src="../img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
@@ -102,7 +83,7 @@
                                     <a href="#" class="search-switch"><img src="../img/icon/search.png" alt=""></a>
                                     <a href="#"><img src="../img/icon/heart.png" alt=""></a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -111,7 +92,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+            	<div class="col-lg-2 mango_logo">
+            		<a href="../main/main.do"><img src="../img/logo.png" alt=""></a>
+            	</div>
+                <div class="col-lg-10">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../main/main.do">HOME</a></li>
