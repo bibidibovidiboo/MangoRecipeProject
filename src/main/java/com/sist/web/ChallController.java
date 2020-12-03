@@ -26,7 +26,7 @@ public class ChallController {
 			   page="1";
 		   int curpage=Integer.parseInt(page);
 		   List<ChallVO> list=dao.m_boardListData(curpage);
-		   int totalpage=dao.m_boardTotalPage();
+		   int totalpage=dao.m_boardTotalpage();
 		   model.addAttribute("curpage", curpage);
 		   model.addAttribute("totalpage", totalpage);
 		   model.addAttribute("list", list);

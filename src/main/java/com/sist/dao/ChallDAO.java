@@ -7,7 +7,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sist.common.DBConnection;
+/*import com.sist.common.DBConnection;*/
 import com.sist.vo.*;
 /* m_board;
  * NO      NOT NULL NUMBER         
@@ -23,6 +23,7 @@ import oracle.jdbc.OracleTypes;
 
 @Repository
 public class ChallDAO {
+	// 테스트
 	/*@Autowired
 	private DBConnection dbConn;
 	private CallableStatement cs;
@@ -353,6 +354,7 @@ public class ChallDAO {
 			cs.setInt(1, no);
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			cs.executeQuery();
+			System.out.println("쿼리실행");
 			ResultSet rs=(ResultSet)cs.getObject(2);
 			rs.next();
 			vo.setNo(rs.getInt(1));
@@ -361,7 +363,7 @@ public class ChallDAO {
 			vo.setContent(rs.getString(4));
 			vo.setRegdate(rs.getDate(5));
 			vo.setHit(rs.getInt(6));
-			vo.setPoster(rs.getString(7));
+			/*vo.setPoster(rs.getString(7));*/
 			rs.close();
 		}catch(Exception ex){}
 		return vo;

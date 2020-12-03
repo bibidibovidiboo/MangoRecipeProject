@@ -15,23 +15,23 @@ public class DBAspect {
    @Autowired
    private DBConnection dbCon;
    
-   @Before("execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))")
+   @Before("execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))||execution(* com.sist.dao.ChallDAO.m_board*(..))||execution(* com.sist.dao.ChallDAO.m_reply*(..))")
    public void before()
    {
 	   System.out.println("DBAspect:"+dbCon);
 	   dbCon.getConnection();
    }
-   @After("execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))")
+   @After("execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))||execution(* com.sist.dao.ChallDAO.m_board*(..))||execution(* com.sist.dao.ChallDAO.m_reply*(..))")
    public void after()
    {
 	   dbCon.disConnection();
    }
-   @AfterThrowing(value="execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))",throwing="ex")
+   @AfterThrowing(value="execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))||execution(* com.sist.dao.ChallDAO.m_board*(..))||execution(* com.sist.dao.ChallDAO.m_reply*(..))",throwing="ex")
    public void afterThrowing(Throwable ex)
    {
 	   ex.printStackTrace();
    }
-   @AfterReturning(value="execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))",returning="obj")
+   @AfterReturning(value="execution(* com.sist.dao.CBoardDAO.board*(..))||execution(* com.sist.dao.CBoardDAO.reply*(..))||execution(* com.sist.dao.ChallDAO.m_board*(..))||execution(* com.sist.dao.ChallDAO.m_reply*(..))",returning="obj")
    public void afterReturning(Object obj)
    {
 	   System.out.println("obj="+obj);

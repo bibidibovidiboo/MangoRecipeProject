@@ -107,7 +107,11 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../main/main.do">MY냉장고</a></li>
-                            <li><a href="../recipe/list.do">레시피</a></li>
+                            <li><a href="../recipe/list.do">레시피</a>
+                            <ul class="dropdown">
+                                    <li><a href="../recipe/list.do">레시피</a></li>
+                                    <li><a href="../chall/list.do">대결</a></li>
+                                </ul>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="#">추천</a></li>
                             <li><a href="../community/list.do">커뮤니티</a></li>
