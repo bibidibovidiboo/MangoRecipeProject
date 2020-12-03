@@ -64,7 +64,7 @@ a:hover {
                                     </td>
                                     <td class="cart__price">${vo.name }</td>
                                     <td class="cart__stock">${vo.regdate }</td>
-                                    <td class="cart__btn"><a href="detail.do" class="primary-btn">대결 신청</a></td>
+                                    <td class="cart__btn"><a href="../detail.do" class="primary-btn">대결 신청</a></td>
                                    <!-- <td></td> -->
                                    
                                 </tr>
