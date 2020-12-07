@@ -8,57 +8,91 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/* .title {
-	font-size: 31px;
-    margin: 36px auto 24px;
+#noto {
+	padding: 83px 33px 74px;
 }
-.c-box {
-	padding: 40px 0 65px;
-}
-.new-btn {
-	color: #ffffff;
-    background-color: #f08632;
-    border-color: #f08632;
-	margin-top: 15px;
-}
-.table-row {
-	background-color: #f3f3f3;
+.title {
+	font-size: 27px;
+	margin-bottom: 23px;
+	font-weight: 400;
+	color: #343434;
 }
 a {
+	color: #212529;
+}
+.table {
+	border-bottom: 1px solid #e0e0e0;
+	font-size: 15px;
+}
+.thead {
+	border-top: 2px solid #858585;
+}
+.thead th{
+	font-weight: 400;
+}
+.table td, .table th {
+    padding: 0.6rem
+}
+tr {
+	font-weight: 300;
+}
+.btn-write {
+	border: 1px solid #d1d1d1;
+    color: #616161;
+    font-weight: 300;
+}
+.con-box {
+	margin-bottom: 10px;
+}
+.table a:hover {
+	text-decoration: underline;
 	color: #222;
 }
-a:hover {
-	color: #f08632;
-} */
-.title {
-	font-weight: 100;
-	font-size: 30px;
+/* pagination */
+a{
+  text-decoration: none;
 }
-.title_box {
-	padding: 22px 0px 0px 0px;
+.pagination a{
+  font-size: 14px;
 }
-.spad {
-    padding-top: 66px;
+.pagination{
+  display: block;
+  margin-top: 100px;
+}
+.pagination ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.pagination a{
+  display: inline-block;
+  padding: 10px 18px;
+  color: #222;
+}
+.p1 a{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
+}
+.p1 a.is-active{
+  background-color: #f0f0f0;
+  border-radius: 100%;
+  color: #000;
 }
 </style>  
 </head>
 <body>
-  <%--  <div class="container">
-     <div class="row c-box">
-       <h1 class="title">커뮤니티 게시판</h1>
+<div class="container" id="noto">
+     <div class="row con-box">
+       <h1 class="title">자유게시판</h1>
        <table class="table">
-         <tr>
-           <td>
-             <a href="insert.do" class="btn btn-warning new-btn">새글</a>
-           </td>
-         </tr>
-       </table>
-       <table class="table">
-         <tr class="table-row">
+         <tr class="thead">
            <th class="text-center" width=10%>번호</th>
            <th class="text-center" width=45%>제목</th>
-           <th class="text-center" width=15%>이름</th>
-           <th class="text-center" width=20%>작성일</th>
+           <th class="text-center" width=15%>작성자</th>
+           <th class="text-center" width=15%>작성일</th>
            <th class="text-center" width=10%>조회수</th>
          </tr>
        
@@ -76,123 +110,27 @@ a:hover {
            </tr>
          </c:forEach>
        </table>
-       <table class="table">
-         <td class="text-center">
-          <a href="#" class="btn btn-sm btn-default">이전</a>
-          ${curpage } page / ${totalpage } pages
-          <a href="#" class="btn btn-sm btn-default">다음</a>
-         </td>
-       </table>
+      		     		
      </div>
-   </div> --%>
-   
-   <!-- 여기부터  -->
-
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="class__item__text title_box">
-                        <h2 class="title">커뮤니티 게시판</h2>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <span>Class</span>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </div>
-
-
-    
-    <!-- Class Section Begin -->
-    <section class="class-page spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="class__item">
-                                <div class="class__item__pic set-bg" data-setbg="../img/class/class-1.jpg">
-                                    <div class="label">$35.00</div>
-                                </div>
-                                <div class="class__item__text">
-                                    <h5><a href="#">ADVANCED BAKING COURSE</a></h5>
-                                    <span>Wed 08 Apr 2020; 6.30pm - 9.30pm</span>
-                                    <p>Professional course: cook’s certificate in food & wine (six weeks full-time)</p>
-                                    <a href="#" class="read_more">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="class__item">
-                                <div class="class__item__pic set-bg" data-setbg="../img/class/class-2.jpg">
-                                    <div class="label">$35.00</div>
-                                </div>
-                                <div class="class__item__text">
-                                    <h5><a href="#">TEEN COOKING CAMP</a></h5>
-                                    <span>Wed 08 Apr 2020; 6.30pm - 9.30pm</span>
-                                    <p>Professional course: cook’s certificate in food & wine (six weeks full-time)</p>
-                                    <a href="#" class="read_more">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="class__item">
-                                <div class="class__item__pic set-bg" data-setbg="../img/class/class-3.jpg">
-                                    <div class="label">$35.00</div>
-                                </div>
-                                <div class="class__item__text">
-                                    <h5><a href="#">THE ULTIMATE BAKING COURSE</a></h5>
-                                    <span>Wed 08 Apr 2020; 6.30pm - 9.30pm</span>
-                                    <p>Professional course: cook’s certificate in food & wine (six weeks full-time)</p>
-                                    <a href="#" class="read_more">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="class__item">
-                                <div class="class__item__pic set-bg" data-setbg="../img/class/class-4.jpg">
-                                    <div class="label">$35.00</div>
-                                </div>
-                                <div class="class__item__text">
-                                    <h5><a href="#">KIDS BAKING COURSE</a></h5>
-                                    <span>Wed 08 Apr 2020; 6.30pm - 9.30pm</span>
-                                    <p>Professional course: cook’s certificate in food & wine (six weeks full-time)</p>
-                                    <a href="#" class="read_more">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    <div class="shop__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><span class="arrow_carrot-right"></span></a>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-4">
-                    <div class="class__sidebar">
-                        <h5>Made from your own hands</h5>
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Phone">
-                            <select>
-                                <option value="">Studying Class</option>
-                                <option value="">Writting Class</option>
-                                <option value="">Reading Class</option>
-                            </select>
-                            <input type="text" placeholder="Type your requirements">
-                            <button type="submit" class="site-btn">registration</button>
-                        </form>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
-    <!-- Class Section End -->
+     <p class="pull-right"><a href="insert.do" class="btn btn-write">글쓰기</a></p>
+     
+    	<div class="pagination p1 text-center">
+      		<ul>
+		        <a href="#"><li><</li></a>
+		        <a class="is-active" href="#"><li>1</li></a>
+		        <a href="#"><li>2</li></a>
+		        <a href="#"><li>3</li></a>
+		        <a href="#"><li>></li></a>
+      		</ul>
+    	</div>
+  	 <!--  
+     <div class="text-center page">
+         <a href="#" class="btn btn-sm">pre</a>
+          ${curpage } page / ${totalpage } pages
+         <a href="#" class="btn btn-sm">next</a>
+     </div> 
+     -->
+  	  
+   </div> 
 </body>
 </html>

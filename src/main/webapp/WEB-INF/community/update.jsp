@@ -14,7 +14,6 @@
 <body>
   <div class="container">
     <div class="row update-box">
-<!--      <h1>수정하기</h1> -->
      <form method=post action="update_ok.do">
      <table class="table">
        <tr>
