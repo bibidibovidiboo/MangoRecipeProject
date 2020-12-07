@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sist.dao.ChallDAO;
 import com.sist.vo.ChReplyVO;
@@ -40,11 +41,23 @@ public class ChallController {
 	   }
 	   
 	   @RequestMapping("insert_ok.do")
-	   public String m_board_insert_ok(ChallVO vo)
+	   public String m_boardInsert_ok(ChallVO vo)
 	   {
 		   dao.m_boardInsert(vo);
 		   return "redirect:../chall/list.do";
 	   }
+	 
+	 /*@RequestMapping("insert.do")
+	 public String m_boardInsert(){
+		 return "chall/insert";
+	 }
+	 @RequestMapping("insert_ok.do")
+	 public String m_boardInsert_ok(ChallVO vo)
+	 {
+		
+		 dao.m_boardInsert(vo);
+		 return "redirect:../chall/list.do";
+	 }*/
 	   
 	   @RequestMapping("detail.do")
 	   public String m_board_detailData(int no,String page,Model model)

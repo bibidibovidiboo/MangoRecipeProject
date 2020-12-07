@@ -1,6 +1,9 @@
 package com.sist.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 /*
  * private int no, hit;
@@ -11,6 +14,15 @@ public class ChallVO {
 	 private int no, hit;
 		private String name, subject, content, pwd,poster;
 		private Date regdate;
+		private List<MultipartFile> files;
+		
+		
+		public List<MultipartFile> getFiles() {
+			return files;
+		}
+		public void setFiles(List<MultipartFile> files) {
+			this.files = files;
+		}
 		public int getNo() {
 			return no;
 		}

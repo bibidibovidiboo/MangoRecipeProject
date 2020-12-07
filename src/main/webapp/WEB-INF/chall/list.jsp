@@ -38,15 +38,16 @@ a:hover {
     <section class="wishlist spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12"><h3 class="text-center" >레시피 공유</h3><br><br>
                     <div class="wishlist__cart__table">
+                     
                         <table>
                             <thead>
                                 <tr>
-                                    <th>대결</th>
+                                    <th>레시피</th>
                                     <th>쉐프</th>
-                                    <th>조회수</th>
-                                    <th><a href="insert.do" class="btn btn-danger new-btn">새로운 대결</a></th>
+                                    <th>등록일</th>
+                                    <th><a href="insert.do" class="btn btn-danger new-btn">레시피 쓰기</a></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -56,7 +57,7 @@ a:hover {
                                 
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="img/shop/cart/cart-1.jpg" alt="">
+                                            <img src="${vo.poster }" alt="" width=100 height=100>
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>${vo.subject }</h6>
@@ -64,7 +65,7 @@ a:hover {
                                     </td>
                                     <td class="cart__price">${vo.name }</td>
                                     <td class="cart__stock">${vo.regdate }</td>
-                                    <td class="cart__btn"><a href="../detail.do" class="primary-btn">대결 신청</a></td>
+                                    <td class="cart__btn"><a href="detail.do?no=${vo.no }" class="primary-btn">비법 보기</a></td>
                                    <!-- <td></td> -->
                                    
                                 </tr>

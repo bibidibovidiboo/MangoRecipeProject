@@ -47,35 +47,6 @@
             </div>
             <hr>
             
-                    <h3>관련 맛집 목록</h3>
-                    
-                    <!-- ========== -->
-                    <div class="row">
-                    <c:forEach var="vo" items="${rlist }">
-                <div class="col-lg-2">
-                    <div class="product__details__img">
-                        <div class="product__details__big__img">
-                        
-                            <img class="big_img" src=${vo.img } alt="">
-                        </div>
-                       
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="product__details__text">
-                       
-                        <h4>ㅈㅂㄷㅂㅈㄷ${vo.title }</h4>
-                       
-                        
-                        </div>
-                    </div>
-                    
-                    </c:forEach>
-                    
-                </div>
-            </div>
-            <br>
-                    <!-- ========== -->
                     
              
         </div>

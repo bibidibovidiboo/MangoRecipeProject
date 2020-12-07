@@ -23,6 +23,7 @@ import oracle.jdbc.OracleTypes;
 
 @Repository
 public class ChallDAO {
+	
 	// 테스트
 	/*@Autowired
 	private DBConnection dbConn;
@@ -302,6 +303,7 @@ public class ChallDAO {
 	private DBConnection dbConn;
 	private CallableStatement cs;
 	private PreparedStatement ps;
+	private RecipeMapper mapper;
 	
 	public List<ChallVO> m_boardListData(int page){
 		List<ChallVO> list=new ArrayList<ChallVO>();
@@ -332,7 +334,7 @@ public class ChallDAO {
 		return list;
 	}
 	
-	public void m_boardInsert(ChallVO vo){
+	/*public void m_boardInsert(ChallVO vo){
 		try{
 			String sql="{CALL m_boardInsert(?,?,?,?,?)}";
 			cs=dbConn.getConn().prepareCall(sql);
@@ -341,9 +343,15 @@ public class ChallDAO {
 			cs.setString(3, vo.getContent());
 			cs.setString(4, vo.getPwd());
 			cs.setString(5, vo.getPoster());
+			System.out.println("name:"+vo.getName());
+			System.out.println("subject:"+vo.getSubject());
+			System.out.println("content:"+vo.getContent());
+			System.out.println("pwd:"+vo.getPwd());
+			System.out.println("poster:"+vo.getPoster());
 			cs.executeQuery();
+			
 		}catch(Exception ex){}
-	}
+	}*/
 	
 	public ChallVO m_boardDetailData(int no)
 	{
@@ -363,7 +371,7 @@ public class ChallDAO {
 			vo.setContent(rs.getString(4));
 			vo.setRegdate(rs.getDate(5));
 			vo.setHit(rs.getInt(6));
-			/*vo.setPoster(rs.getString(7));*/
+			vo.setPoster(rs.getString(7));
 			rs.close();
 		}catch(Exception ex){}
 		return vo;
@@ -441,6 +449,19 @@ public class ChallDAO {
 		return total;
 	}
 	
+	public void m_boardInsert(ChallVO vo){
+		try{
+			String sql="{CALL m_boardInsert(?,?,?,?,?)}";
+			cs=dbConn.getConn().prepareCall(sql);
+			cs.setString(1, vo.getName());
+			cs.setString(2, vo.getSubject());
+			cs.setString(3, vo.getContent());
+			cs.setString(4, vo.getPwd());
+			cs.setString(5, vo.getPoster());
+			cs.executeQuery();
+		}catch(Exception ex){}
+	}
+	
 	public List<ChReplyVO> m_replyListData(int type,int cno,int page)
 	{
 		List<ChReplyVO> list=new ArrayList<ChReplyVO>();
@@ -483,7 +504,7 @@ public class ChallDAO {
 			cs.setString(3, vo.getId());
 			cs.setString(4, vo.getName());
 			cs.setString(5, vo.getMsg());
-			
+			System.out.println(vo.getMsg());
 			cs.executeQuery();
 		}catch(Exception ex){}
 	}

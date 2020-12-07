@@ -33,6 +33,13 @@
         </td>
        </tr>
        
+        <tr>
+        <th class="text-right warning" width=20%>사진</th>
+        <td width=85%>
+          <input type=text name=poster size=50>
+        </td>
+       </tr>
+       
        <tr>
         <th class="text-right warning" width=20%>내용</th>
         <td width=85%>

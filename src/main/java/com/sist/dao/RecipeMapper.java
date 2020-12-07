@@ -15,6 +15,7 @@ import com.sist.vo.*;
  */
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 public interface RecipeMapper {
 	/*@Select("SELECT * "
 			+ "FROM recipe_table "
@@ -44,6 +45,11 @@ public interface RecipeMapper {
 			+ "WHERE rownum<=5")
 			// SELECT distinct r.no,r.title,r.cateno,r.poster FROM restaurant_data r,recipe_table p WHERE r.cateno=p.cno;
 	public RestaurantVO LikeRecipeData(int cateno);
+	
+	
+	@Select("INSERT INTO m_board(no,name,subject,content,pwd) "
+			+ "VALUES(#{no},#{name},#{subject},#{content},#{pwd})")
+	public void m_boardInsert(ChallVO vo);
 	
 	
 }

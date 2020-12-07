@@ -13,7 +13,9 @@
     <section class="shop spad">
         <div class="container">
             <div class="shop__option">
-                <div class="row">
+            <div class="col-lg-12"><h3 class="text-center" >레시피 자랑하기</h3><br><br>
+               <!--  <div class="row">
+                
                     <div class="col-lg-7 col-md-7">
                         <div class="shop__option__search">
                             <form action="#">
@@ -42,7 +44,7 @@
                         </div>
                     </div> 
                 </div>
-            </div>
+            </div> -->
             
             
             <div class="row">

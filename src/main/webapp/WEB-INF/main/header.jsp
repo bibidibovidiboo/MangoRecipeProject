@@ -110,7 +110,7 @@
                             <li><a href="../recipe/list.do">레시피</a>
                             <ul class="dropdown">
                                     <li><a href="../recipe/list.do">레시피</a></li>
-                                    <li><a href="../chall/list.do">대결</a></li>
+                                    <li><a href="../chall/list.do">공유</a></li>
                                 </ul>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="#">추천</a></li>
