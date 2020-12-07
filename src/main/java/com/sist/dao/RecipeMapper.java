@@ -16,6 +16,7 @@ import java.util.*;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.sist.vo.RecipeIngreVO;
 import com.sist.vo.RecipeVO;
 public interface RecipeMapper {
 	/*@Select("SELECT * "
@@ -41,6 +42,9 @@ public interface RecipeMapper {
 			+ "WHERE rno=#{rno}")
 	public RecipeVO recipeDetailData(int rno);
 	
+//	@Select("SELECT * FROM ingre_table "
+//			+ "WHERE rno=#{rno}")
+//	public RecipeIngreVO recipeIngreData(int rno);
 	
 }
 	

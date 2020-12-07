@@ -5,6 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- haenitest -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#haenitest').on('change',function(){
+		let order = $('#haenitest option:selected').val();
+		console.log(order);
+	})
+	
+})
+
+
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -49,11 +63,11 @@
                     </div>
                     <div class="col-lg-5 col-md-5">
                         <div class="shop__option__right">
-                            <select>
-                                <option value="">Default sorting</option>
-                                <option value="">A to Z</option>
-                                <option value="">1 - 8</option>
-                                <option value="">Name</option>
+                            <select id="haenitest">
+                                <option value="Default">Default sorting</option>
+                                <option value="A">A to Z</option>
+                                <option value="1">1 - 8</option>
+                                <option value="Name">Name</option>
                             </select>
                             <a href="#"><i class="fa fa-list"></i></a>
                             <a href="#"><i class="fa fa-reorder"></i></a>

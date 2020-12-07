@@ -79,7 +79,6 @@
                                      		</c:when>
                                      		<c:when test="${id!=null }">
                                      		<a href="../main/logout.do"><li>Logout</li></a>
-                                     		<li>Logout</li>
                                             </c:when>
                                             </c:choose>
                                         </ul>
@@ -87,7 +86,7 @@
                                     </li>
                                     <c:if test="${sessionScope.id!=null }">
 	                                 	&nbsp;<span style="font-size:9.5pt"> ${id }님, 안녕하세요!</span>
-	                            	  </c:if>
+	                            	</c:if>
                                 </ul>
                             </div>
                              <div class="header__logo">

@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <style>
+    #myModal{
+    	z-index:100000;
+    }
+    </style>
 </head>
 
 <body>
@@ -95,7 +100,8 @@
     				{
     					alert("로그인 되었습니다");
     					$('#myModal').modal("hide");
-    					location.href="../main/main.do";
+    					//location.href="../main/main.do";
+    					parent.location.reload();
     					$('#id').val("");
     					$('#pwd').val("");
     					$('#result').text("");
@@ -135,8 +141,15 @@
 							id="result"></span></td>
 					</tr>
 				</table>
+				<table>
+					<tr>
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=f8c948f8dbdfe021e363a00a2c734e22&redirect_uri=http://localhost/web/kakaologin.do&response_type=code" ><img src="../img/kakao_login.png" alt=""></a>
+					</tr>
+				</table>
+				
 			</div>
 			<div class="modal-footer">
+				
 				<input type=button class="btn btn-success" value="로그인" id="logBtn">
 				<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			</div>

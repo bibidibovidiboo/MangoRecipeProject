@@ -4,7 +4,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sist.vo.RecipeVO;
+import com.sist.vo.*;
 @Repository
 public class RecipeDAO {
 	@Autowired
@@ -22,5 +22,11 @@ public class RecipeDAO {
 	public int recipeTotalPage(){
 		return mapper.recipeTotalPage();
 	}
+	/*
+	 * public RecipeIngreVO recipeIngreData(int rno){
+	 * 
+	 * return mapper.recipeIngreData(rno); }
+	 */
+	
 	
 }
