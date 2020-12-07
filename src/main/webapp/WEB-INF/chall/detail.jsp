@@ -125,6 +125,8 @@ $(function(){
         </table>
         <br><br><br><br><br>
         <table>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
        <img src="${vo.poster }" alt="" width=500 height=200>
        </table>
        <br><br><br>
