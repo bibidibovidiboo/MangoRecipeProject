@@ -71,9 +71,12 @@ label {
 	  		<label for="subject">제목</label>
 			<input type="text" class="form-control" name=subject>
       	</div>
+
 		<div class="mb-3">
 			<label for="name">작성자</label>
-			<input type="text" class="form-control" name=name>
+			<c:if test="${sessionScope.id!=null }">
+				<input type="text" class="form-control" name=name value="${name }">
+			</c:if>
 		</div>
 		<div class="mb-3">
 			<textarea class="form-control form-end" rows="5" name=content  placeholder="내용을 입력해 주세요" style="height: 300px"></textarea>
