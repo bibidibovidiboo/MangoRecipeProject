@@ -50,6 +50,13 @@ label {
 .btn-box {
 	margin-top: 36px;
 }
+.cBtn {
+	background: #111;
+    color: #fff;
+    border-radius: 0;
+    font-weight: 500;
+    padding: 10px 14px;
+}
 </style>
 </head>
 <body>
@@ -76,8 +83,8 @@ label {
 			<input type="password" class="form-control" name=pwd>
 		</div>
 		<div class="text-center btn-box">
-			<button type=submit value="글쓰기" class="btn btn-write">등록</button>
-        	<button type=button value="취소" class="btn btn-write" onclick="javascript:history.back()">취소</button>
+			<button type=submit value="글쓰기" class="btn cBtn">등록</button>
+        	<button type=button value="취소" class="btn cBtn" onclick="javascript:history.back()">취소</button>
 		</div>
      </form>
     </div>

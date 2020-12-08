@@ -70,7 +70,11 @@ public class CBoardController {
 	   boolean bCheck=dao.boardUpdate(vo);
 	   model.addAttribute("bCheck", bCheck);
 	   model.addAttribute("no", vo.getNo());
-	   return "community/update_ok";//ajax
+	   
+	   return "community/update_ok";
+	 
+	   // return "redirect:../community/list.do";
+	   
    }
    
    @RequestMapping("delete.do")

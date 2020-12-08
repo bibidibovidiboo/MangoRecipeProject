@@ -30,12 +30,18 @@ $(function(){
 });
 </script>
 <style type="text/css">
+#noto {
+	padding-bottom: 100px;
+}
  .detail-box {
 	margin-top: 63px;
     padding: 0 120px;
 }
 .reply-box {
-	margin: 0 0 50px 100px;
+	margin: 52px 0px 0px -170px;
+}
+.reply-table {
+	margin-top: 10px;
 }
 .btn-write {
 	border: 1px solid #d1d1d1;
@@ -69,7 +75,67 @@ pre {
 	white-space: pre-line;
 	border:none;
 	background-color: white; 
-	font-weight: 100;
+	font-weight: 300;
+}
+.btn-custom {
+	font-size: 14px;
+    color: #111111;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-right: 24px;
+    position: relative;
+}
+.btn-custom1:after {
+	position: absolute;
+    right: -16px;
+    top: 3px;
+    content: "|";
+    color: #888888;
+    font-weight: 500;
+}
+.tit {
+	padding-left: 116px;
+}
+.dbday{
+	font-size: 14px;
+    font-weight: 300;
+    margin-left: 15px;
+    color: #8c8c8c;
+}
+.card-header {
+	font-size: 19px;
+}
+.card my-4 {
+	margin-left: 12px;
+}
+.blog__details__comment h5:before {
+    top: 3px;
+    height: 17px;
+    width: 7px;
+}
+.reply-write{
+	margin-left: 97px;
+}
+.site-btn {
+    background: #1e1e1e;
+    font-weight: 400;
+    padding: 13px 28px;
+}
+.contact__form form textarea {
+	width: 168%;
+}
+.reply-con {
+	padding-left: 12px;
+}
+.table .site-btn {
+    background: #1e1e1e;
+    font-weight: 400;
+    padding: 8px 16px;
+    border-radius: 0;
+}
+.reply-write {
+    padding: 12px 22px;
+    margin-top: -6px;
 }
 </style>
 </head>
@@ -92,31 +158,32 @@ pre {
         </tr>
         <tr>
           <td colspan="4" class="text-right">
-            <a href="update.do?no=${vo.no }" class="btn btn-m btn-write">수정</a>
-            <a href="delete.do?no=${vo.no }" class="btn btn-m btn-write">삭제</a>
-            <a href="list.do" class="btn btn-m btn-write">목록</a>
+            <a href="update.do?no=${vo.no }" class="btn-m site-btn">수정</a>
+            <a href="delete.do?no=${vo.no }" class="btn-m site-btn">삭제</a>
+            <a href="list.do" class="btn-m site-btn">목록</a>
           </td>
         </tr>
       </table>
      </div>
      
      
-     <div class="row">
+     <div class="row blog__details__comment reply-con">
+    	<div class="tit"><h5>Comment</h5></div>
 
-       <div class="col-sm-6  reply-box">
+       	<div class="col-sm-6  reply-box">
         <table class="table reply-table">
          <tr>
            <td>
             <c:forEach var="rvo" items="${list }">
              <table class="table">
               <tr>
-                <td class="text-left" style="font-weight: 300">
-                   ${rvo.name } / ${rvo.dbday}
+                <td class="text-left" style="font-weight:300;padding-top:15px">
+                   ${rvo.name }  <span class="dbday">${rvo.dbday}</span>
                 </td>
                 <td class="text-right">
                   <c:if test="${sessionScope.id==rvo.id }">
-                    <span class="btn btn-sm btn-write upBtn" data-no="${rvo.no }">수정</span>
-                    <a href="reply_delete.do?no=${rvo.no }&cno=${vo.no}" class="btn btn-sm btn-write">삭제</a>
+                    <span class="btn btn-sm btn-custom btn-custom1 upBtn" data-no="${rvo.no }">수정</span>
+                    <a href="reply_delete.do?no=${rvo.no }&cno=${vo.no}" class="btn btn-sm btn-custom">삭제</a>
                   </c:if>
                 </td>
               </tr>
@@ -141,10 +208,13 @@ pre {
            </td>
          </tr>
          
-         <tr>
+         
+        <%--  <tr>
           <td>
+         
           	<div class="card my-4">
-	          <h5 class="card-header">Comment</h5>
+          	 
+	          <h4 class="card-header">COMMENT</h4>
 	          <div class="card-body">
 	            <form method=post action="reply_insert.do">
 	            <input type=hidden name=cno value=${vo.no }>
@@ -154,12 +224,31 @@ pre {
 	            </div>
 	        </div>
           </td>
+         </tr> --%>
+         
+         <tr>
+         
+         
          </tr>
         </table>
        </div>
-       <div class="col-sm-6"></div>
-       
-        
+
+       <div class="col-sm-6 reply-write">
+                    <div class="contact__form">
+                         <form method=post action="reply_insert.do">
+                         	<input type=hidden name=cno value=${vo.no }>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <textarea rows="3" class="form-control" name=msg></textarea>
+                                    <button type="submit" class="site-btn">댓글쓰기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+      </div>
+               
+                
+
      </div>
    </div>
 </body>

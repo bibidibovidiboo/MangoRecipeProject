@@ -81,6 +81,13 @@ a{
   border-radius: 100%;
   color: #000;
 }
+.cBtn {
+	background: #111;
+    color: #fff;
+    border-radius: 0;
+    font-weight: 500;
+    padding: 10px 14px;
+}
 </style>  
 </head>
 <body>
@@ -112,7 +119,7 @@ a{
        </table>
       		     		
      </div>
-     <p class="pull-right"><a href="insert.do" class="btn btn-write">글쓰기</a></p>
+     <p class="pull-right"><a href="insert.do" class="cBtn">글쓰기</a></p>
      
     	<div class="pagination p1 text-center">
       		<ul>
