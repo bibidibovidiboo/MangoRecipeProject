@@ -11,13 +11,13 @@ public interface ShoppingMapper {
 	@Select("SELECT no,title,image,lprice,category2,category3,num "
 			+"FROM (SELECT no,title,image,lprice,category2,category3,rownum as num "
 			+"FROM (SELECT no,title,image,lprice,category2,category3 "
-			+"FROM naver_shopping ORDER BY no ASC))"
+			+"FROM naver_shopping WHERE category2=#{category2} ORDER BY no ASC))"
 			+"WHERE num BETWEEN #{start} AND #{end}")
 	public List<ShoppingVO> shoppingListData(Map map);
 	
 	//총페이지
-	@Select("SELECT CEIL(COUNT(*)/12.0) FROM naver_shopping")
-	public int shoppingTotalPage();
+	@Select("SELECT CEIL(COUNT(*)/12.0) FROM naver_shopping WHERE category2=#{category2}")
+	public int shoppingTotalPage(String category2);
 	
 	// 상세
 	@Select("SELECT * FROM naver_shopping WHERE no=#{no}")
@@ -25,8 +25,8 @@ public interface ShoppingMapper {
 	
 	
 	// 카테고리 분류
-	@Select("SELECT * FROM naver_shopping WHERE category2=#{name}")
-	public List<ShoppingVO> shoppingCateDate(String name);
+	@Select("SELECT * FROM naver_shopping WHERE category2=#{category2}")
+	public List<ShoppingVO> shoppingCateData(String category2);
 	
 	
 	// 상세보기 레시피 리스트 출력

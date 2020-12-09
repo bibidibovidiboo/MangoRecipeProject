@@ -59,7 +59,6 @@
                     <div class="breadcrumb__links">
                         <a href="../main/main.do">Home</a>
                         <a href="../shopping/list.do">Shop</a>
-                        <span>Sweet autumn leaves</span>
                     </div>
                 </div>
             </div>
@@ -74,9 +73,26 @@
                 <div class="col-lg-6">
                     <div class="product__details__img">
                         <div class="product__details__big__img">
+                        <tr>
                             <img class="big_img" src="${vo.image }" alt="">
-                        </div>
-                        <div class="product__details__thumb">
+                        </tr>&nbsp;&nbsp;&nbsp;&nbsp;
+						<tr>
+						<table class="table">                       
+                            <h3 class="text-center">이런 요리 어떠세요?</h3>&nbsp;
+                            <c:forEach var="vo" items="${rList }">
+                            	<tr>
+                            		<td>
+                            			<img src="${vo.img }" width=50px height=50px>
+                            		</td>
+                            		<td>
+                            			<h3 style="font-size:10pt">${vo.title }</h3>
+                            		</td>
+                            	</tr>
+                            </c:forEach>
+                           </table>
+                       </tr>
+                       </div>
+                        <!-- <div class="product__details__thumb">
                             <div class="pt__item active">
                                 <img data-imgbigurl="img/shop/details/product-big-2.jpg"
                                 src="img/shop/details/product-big-2.jpg" alt="">
@@ -97,7 +113,7 @@
                                 <img data-imgbigurl="img/shop/details/product-big-5.jpg"
                                 src="img/shop/details/product-big-5.jpg" alt="">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -106,19 +122,67 @@
                         <td> ${vo.category1 } | ${vo.category2 } | ${vo.category4 }</td>
                         <a href="${vo.link }"><h4>${vo.title}</h4></a>
                         <h5>${vo.lprice }원</h5>
-                            <table class="table">
-                            <h5>이런 요리 어떠세요?</h5>
-                            <c:forEach var="vo" items="${rList }">
-                            	<tr>
-                            		<td>
-                            			<img src="${vo.img }" width=50px height=50px>
-                            		</td>
-                            		<td>
-                            			<h3 style="font-size:10pt">${vo.title }</h3>
-                            		</td>
-                            	</tr>
-                            </c:forEach>
-                            </table>
+                        
+            <!-- 댓글 -->            
+            <table class="table">
+              <tr>
+               <td>
+                 <c:forEach var="vo" items="${sList }">
+                   <table class="table table-striped">
+                    <tr>
+                     <td class="text-left">◑${vo.name }(${vo.dbday })</td>
+                     <td class="text-right">
+                      <c:if test="${sessionScope.id==vo.id }">
+                       <span value="${vo.no }" class="btn btn-xs btn-success up">수정</span>
+                       <a href="../shopping/ShoppingReply_delete.do?no=${vo.no }&cno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
+                      </c:if>
+                     </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                       <pre style="white-space: pre-wrap;border:none;background-color: white">${vo.msg }</pre>
+                      </td>
+                    </tr>
+                    <tr class="updates" id="${vo.no }" style="display:none">
+		               <td colspan="2">
+		                 <form method="post" action="../shopping/ShoppingReply_update.do">
+			                 <input type="hidden" name="cno" value="${vo.no }">
+			                 <input type="hidden" name="no" value="${vo.no }">
+			                 <textarea rows="3" cols="63" name="msg" style="float: left">${vo.msg }</textarea>
+			                 <input type=submit value="댓글수정" class="btn btn-sm btn-primary"
+			                  style="float: right;height: 73px">
+		                  </form>
+		               </td>
+		              </tr>
+                   </table>
+               </c:forEach>
+               </td>
+              </tr>
+            </table>
+            <table class="table">
+              <tr>
+              <td>
+                 <form method="post" action="../shopping/ShoppingReply_insert.do">
+	                 <input type="hidden" name="cno" value="${vo.no }">
+	                 <textarea rows="3" cols="45" name="msg" style="float: left"></textarea>
+	                 <input type=submit value="댓글쓰기" class="btn btn-sm btn-primary" style="float: left;height: 73px">
+                  </form>
+               </td>
+              </tr>
+
+			<tr>
+			<td>
+				<c:forEach var="vo" items="${sList }">                  
+                 <form method="post" action="../shopping/ShoppingReply_insert.do">
+	                 <input type=checkbox name="굿" value="${vo.good }">굿
+			         <input type=checkbox name="흠" value="${vo.soso }">흠
+			         <input type=checkbox name="웩" value="${vo.bad }">웩
+			         <input type="submit" value="평가하기" class="btn btn-sm btn-primary">
+			      </form>
+			      </c:forEach>
+			</td>
+			</tr>
+            </table>
                         <!-- <div class="product__details__option">
                             <div class="quantity">
                                 <div class="pro-qty">

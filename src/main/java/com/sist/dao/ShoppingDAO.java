@@ -25,15 +25,15 @@ public class ShoppingDAO {
 	
 	
 	// 가격 총페이지
-	public int shoppingTotalPage()
+	public int shoppingTotalPage(String category2)
 	{
-		return mapper.shoppingTotalPage();
+		return mapper.shoppingTotalPage(category2);
 	}
 	
 	//카테고리별 데이터
-	public List<ShoppingVO> shoppingCateDate(String name)
+	public List<ShoppingVO> shoppingCateData(String category2)
 	{
-		return mapper.shoppingCateDate(name);
+		return mapper.shoppingCateData(category2);
 	}
 
 	

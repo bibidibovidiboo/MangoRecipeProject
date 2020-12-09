@@ -8,19 +8,34 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+let category2="";
 $(function(){
-	$('.btn2').click(function(){
-		let name=$(this).attr("name");
-		console.log('name은?'+name);
-	})
 	$.ajax({
 		type:'post',
-		url:'../shopping/list.do?category2='+name,
+		url:'../shopping/sublist.do',
+		data:{"category2":category2},
 		success:function(result)
 		{
-			$('.btn_group').html(result);
+			$('.sublist').html(result);
 		}
-	})
+	});
+	$('#choose').click(function(){
+		let category2=$('#sorting').val();
+		console.log('제발!!!!!'+category2);
+		$.ajax({
+			type:'post',
+			url:'../shopping/sublist.do?category2='+category2,
+			success:function(result)
+			{
+				$('.sublist').html(result);
+			}
+		})
+	});
+	$('#category2').click(function(){
+		let category2=$(this).attr("value");
+		console.log('category2는?'+category2);
+	});
+	
 });
 </script>
 </head>
@@ -46,72 +61,59 @@ $(function(){
     <!-- Breadcrumb End -->
 
     <!-- Shop Section Begin -->
+<!--                             "축산","건강식품","수산","농산물","반찬","김치","음료","가공식품","다이어트식품","과자","아이스크림/빙수","냉동/간편조리식품","전통주","쿠킹박스" -->
     <section class="shop spad">
         <div class="container">
-            <div class="shop__option">
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
-<!--                             <form action="../shopping/list.do"> -->
-                            <!-- "축산","건강식품","수산","농산물","반찬","김치","음료","가공식품","다이어트식품","과자","아이스크림/빙수","냉동/간편조리식품","전통주","쿠킹박스" -->
-                            <div id="btn_group">
-                            	<button class="btn2" name="축산">축산</button>
-                            	<button class="btn2" name="수산">수산</button>
-                            	<button class="btn2" name="건강식품">건강식품</button>
-                            	<button class="btn2">수산</button>
-                            	<button class="btn2">반찬</button>
-                            	<button class="btn2">농수산</button>
-                            	<button class="btn2">김치</button>
-                            	<button class="btn2">음료</button>
-                            	<button class="btn2">가공식품</button>
-                            	<button class="btn2">다이어트식품</button>
-                            	<button class="btn2">과자</button>
-                            	<button class="btn2">아이스크림/빙수</button>
-                            	<button class="btn2">냉동/간편조리식품</button>
-                            	<button class="btn2">전통주</button>
-                            	<button class="btn2">쿠킹박스</button>
-                            </div>
-<!--                             </form> -->
+                    <form>
+    						<select name="category2" id="sorting">
+    							<option value="축산">축산</option>
+                            	<option value="수산">수산</option>
+                            	<option value="건강식품">건강식품</option>
+                            	<option value="반찬">반찬</option>
+                            	<option value="농산물">농산물</option>
+                            	<option value="김치">김치</option>
+                            	<option value="음료">음료</option>
+                            	<option value="가공식품">가공식품</option>
+                            	<option value="다이어트식품">다이어트식품</option>
+                            	<option value="과자">과자</option>
+                            	<option value="아이스크림/빙수">아이스크림/빙수</option>
+                            	<option value="냉동/간편조리식품">냉동/간편조리식품</option>
+                            	<option value="전통주">전통주</option>
+                            	<option value="쿠킹박스">쿠킹박스</option>
+    						</select>
+                            	<input id="choose" type="button" class="btn btn-md btn-warning" value="적용하기">
+    				</form>                
+                             
                     </div>
-                    <div class="col-lg-5 col-md-5">
-                        <div class="shop__option__right">
-                            <select>
-                                <option value="">Default sorting</option>
-                                <option value="축산">축산</option>
-                                <option value="수산">수산</option>
-                                <option value="">Name</option>
-                            </select>
-                            <a href="#"><i class="fa fa-list"></i></a>
-                            <a href="#"><i class="fa fa-reorder"></i></a>
-                        </div>
-                    </div>
+<!--                     <div class="col-lg-5 col-md-5"> -->
+<!--                         <div class="shop__option__right"> -->
+<!--                             <select> -->
+<!--                                 <option value="">Default sorting</option> -->
+<!--                                 <option value="축산">축산</option> -->
+<!--                                 <option value="수산">수산</option> -->
+<!--                                 <option value="">Name</option> -->
+<!--                             </select> -->
+<!--                             <a href="#"><i class="fa fa-list"></i></a> -->
+<!--                             <a href="#"><i class="fa fa-reorder"></i></a> -->
+<!--                         </div> -->
+<!--                     </div> -->
                 </div>
-            </div>
-            <div class="row">
-            <c:forEach var="vo" items="${list }">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="${vo.image }">
-                            <div class="product__label">
-                                <span>${vo.no }.${vo.category2 }</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="../shopping/detail.do?no=${vo.no }&category3=${vo.category3}">${vo.title }</a></h6>
-                            <div class="product__item__price">${vo.lprice }원</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </c:forEach>
-                </div>
+            
+ 			<div class="row">
+           		<div class="sublist">
+           			<!-- 데이터출력 -->
+           		</div>
+           	</div>
+           	
              <div class="text-center">
-            <a href="../shopping/list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-success">이전</a>
+            <a href="..shopping/sublist.do?page=${curpage>1?curpage-1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-success">이전</a>
               ${curpage } page / ${totalpage } pages
-            <a href="../shopping/list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-info">다음</a>
+            <a href="../shopping/sublist.do?page=${curpage<totalpage?curpage+1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-info">다음</a>
           </div>   
-              
+       </div>
+</section> 
     <!-- Shop Section End -->
 </body>
 </html>
