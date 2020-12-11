@@ -133,7 +133,7 @@ public class CBoardDAO {
 			cs.executeQuery();
 			String result=cs.getString(6);
 			bCheck=Boolean.parseBoolean(result);
-		}catch(Exception ex){/*ex.printStackTrace();*/}
+		}catch(Exception ex){ex.printStackTrace();}
 		return bCheck;
 	}
 	

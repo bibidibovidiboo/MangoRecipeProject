@@ -20,6 +20,7 @@ public class CBoardController {
    @RequestMapping("list.do")
    public String board_list(String page,Model model)
    {
+	   System.out.println(1111);
 	   if(page==null)
 		   page="1";
 	   int curpage=Integer.parseInt(page);
@@ -67,9 +68,14 @@ public class CBoardController {
    @RequestMapping("update_ok.do")
    public String board_update_ok(CBoardVO vo,Model model)
    {
+	   try {
 	   boolean bCheck=dao.boardUpdate(vo);
 	   model.addAttribute("bCheck", bCheck);
+	   System.out.println("bCheck:"+bCheck);
 	   model.addAttribute("no", vo.getNo());
+	   }catch (Exception e) {
+		   e.printStackTrace();
+	   }
 	   
 	   return "community/update_ok";
 	 
