@@ -81,9 +81,8 @@ $(function(){
                             	<option value="아이스크림/빙수">아이스크림/빙수</option>
                             	<option value="냉동/간편조리식품">냉동/간편조리식품</option>
                             	<option value="전통주">전통주</option>
-                            	<option value="쿠킹박스">쿠킹박스</option>
     						</select>
-                            	<input id="choose" type="button" class="btn btn-md btn-warning" value="적용하기">
+                            	<input id="choose" type="button" class="primary-btn" value="적용하기">
     				</form>                
                              
                     </div>
@@ -107,11 +106,11 @@ $(function(){
            		</div>
            	</div>
            	
-             <div class="text-center">
-            <a href="..shopping/sublist.do?page=${curpage>1?curpage-1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-success">이전</a>
-              ${curpage } page / ${totalpage } pages
-            <a href="../shopping/sublist.do?page=${curpage<totalpage?curpage+1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-info">다음</a>
-          </div>   
+<!--              <div class="text-center"> -->
+<%--             <a href="../shopping/sublist.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-success">이전</a> --%>
+<%--               ${curpage } page / ${totalpage } pages --%>
+<%--             <a href="../shopping/sublist.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-info">다음</a> --%>
+<!--           </div>    -->
        </div>
 </section> 
     <!-- Shop Section End -->

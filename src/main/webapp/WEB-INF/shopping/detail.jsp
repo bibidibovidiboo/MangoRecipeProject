@@ -6,6 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['선호도', '댓글'],
+          ['좋아요',     <c:out value="${svo.good}"/>],
+          ['괜찮다',      <c:out value="${svo.soso}"/>],
+          ['별로',  <c:out value="${svo.bad}"/>]
+        ]);
+        var options = {
+          title: '댓글 분석',
+          is3D:true
+        };
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+     }
+</script>
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -85,7 +105,7 @@
                             			<img src="${vo.img }" width=50px height=50px>
                             		</td>
                             		<td>
-                            			<h3 style="font-size:10pt">${vo.title }</h3>
+                            			<a href="../recipe/detail.do?rno=${vo.rno}"><h3 style="font-size:11pt">${vo.title }</h3></a>
                             		</td>
                             	</tr>
                             </c:forEach>
@@ -119,9 +139,10 @@
                 <div class="col-lg-6">
                     <div class="product__details__text">
                         <div class="product__label">${vo.category3}</div><br>
-                        <td> ${vo.category1 } | ${vo.category2 } | ${vo.category4 }</td>
+                        <a> ${vo.category1 } | ${vo.category2 } | ${vo.category4 }</a>
                         <a href="${vo.link }"><h4>${vo.title}</h4></a>
                         <h5>${vo.lprice }원</h5>
+                        <a href="${vo.link }" class="primary-btn">최저가 구매하기</a>
                         
             <!-- 댓글 -->            
             <table class="table">
@@ -133,8 +154,8 @@
                      <td class="text-left">◑${vo.name }(${vo.dbday })</td>
                      <td class="text-right">
                       <c:if test="${sessionScope.id==vo.id }">
-                       <span value="${vo.no }" class="btn btn-xs btn-success up">수정</span>
-                       <a href="../shopping/ShoppingReply_delete.do?no=${vo.no }&cno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
+                       <a href="shopping/shoppingReply_update.do?no=${vo.cno }&cno=${vo.no}" class="btn btn-xs btn-success">수정</a>
+                       <a href="../shopping/shoppingReply_delete.do?no=${vo.cno }&cno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
                       </c:if>
                      </td>
                     </tr>
@@ -145,11 +166,11 @@
                     </tr>
                     <tr class="updates" id="${vo.no }" style="display:none">
 		               <td colspan="2">
-		                 <form method="post" action="../shopping/ShoppingReply_update.do">
+		                 <form method="post" action="../shopping/shoppingReply_update.do">
 			                 <input type="hidden" name="cno" value="${vo.no }">
-			                 <input type="hidden" name="no" value="${vo.no }">
+			                 <input type="hidden" name="no" value="${svo.no }">
 			                 <textarea rows="3" cols="63" name="msg" style="float: left">${vo.msg }</textarea>
-			                 <input type=submit value="댓글수정" class="btn btn-sm btn-primary"
+			                 <input type=submit value="댓글수정" class="btn btn-sm btn-"
 			                  style="float: right;height: 73px">
 		                  </form>
 		               </td>
@@ -162,26 +183,26 @@
             <table class="table">
               <tr>
               <td>
-                 <form method="post" action="../shopping/ShoppingReply_insert.do">
+                 <form method="post" action="../shopping/shoppingReply_insert.do">
+	                 <input type=checkbox name=i value="${svo.good }">좋아요
+			         <input type=checkbox name=j value="${svo.soso }">괜찮다
+			         <input type=checkbox name=k value="${svo.bad }">별로<br>
+			         
 	                 <input type="hidden" name="cno" value="${vo.no }">
+	                 <input type="hidden" name="category3" value="${vo.category3}">
 	                 <textarea rows="3" cols="45" name="msg" style="float: left"></textarea>
-	                 <input type=submit value="댓글쓰기" class="btn btn-sm btn-primary" style="float: left;height: 73px">
+	                 <input type=submit value="댓글쓰기" class="product__label" style="float: left;height: 73px">
                   </form>
                </td>
               </tr>
 
-			<tr>
-			<td>
-				<c:forEach var="vo" items="${sList }">                  
-                 <form method="post" action="../shopping/ShoppingReply_insert.do">
-	                 <input type=checkbox name="굿" value="${vo.good }">굿
-			         <input type=checkbox name="흠" value="${vo.soso }">흠
-			         <input type=checkbox name="웩" value="${vo.bad }">웩
-			         <input type="submit" value="평가하기" class="btn btn-sm btn-primary">
-			      </form>
-			      </c:forEach>
-			</td>
-			</tr>
+            </table>
+            <table class="table">
+             <tr>
+               <td>
+                 <div id="piechart" style="width: 500px; height: 250px;"></div>
+               </td>
+             </tr>
             </table>
                         <!-- <div class="product__details__option">
                             <div class="quantity">
@@ -196,18 +217,13 @@
                     </div>
                 </div>
             </div>
+ </section>
             <div class="product__details__tab">
                 <div class="col-lg-12">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">마트 지도</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">키워드</a>
-                        </li>
-                       <!--  <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
-                        </li> -->
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -453,142 +469,13 @@ function removeAllChildNods(el) {
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <p>review
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <p>33333333
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        
+                     
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Shop Details Section End -->
 
-    <!-- Related Products Section Begin -->
-    
-   <!--  <section class="related-products spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>Related Products</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="related__products__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-1.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Dozen Cupcakes</a></h6>
-                                <div class="product__item__price">$32.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookies and Cream</a></h6>
-                                <div class="product__item__price">$30.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                                <div class="product__item__price">$31.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookie Dough</a></h6>
-                                <div class="product__item__price">$25.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                                <div class="product__item__price">$05.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">German Chocolate</a></h6>
-                                <div class="product__item__price">$14.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Related Products Section End -->
 </body>
 </html>

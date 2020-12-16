@@ -13,7 +13,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
                         <div class="product__item__pic set-bg"> 
-                        	<img src="${vo.image }">
+                        	<a href="../shopping/detail.do?no=${vo.no }&category3=${vo.category3}"><img src="${vo.image }"></a>
                             <div class="product__label">
                                 <span>${vo.no }.${vo.category2 }</span>
                             </div>
@@ -22,7 +22,7 @@
                             <h6><a href="../shopping/detail.do?no=${vo.no }&category3=${vo.category3}">${vo.title }</a></h6>
                             <div class="product__item__price">${vo.lprice }원</div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#">최저가 구매하기</a>
                             </div>
                         </div>
                     </div>
@@ -30,11 +30,11 @@
        </c:forEach>
 </div>
 
-<!--              <div class="text-center"> -->
-<%--             <a href="sublist.do?page=${curpage>1?curpage-1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-success">이전</a> --%>
-<%--               ${curpage } page / ${totalpage } pages --%>
-<%--             <a href="sublist.do?page=${curpage<totalpage?curpage+1:curpage }&category2=${vo.category2}" class="btn btn-sm btn-info">다음</a> --%>
-<!--           </div>    -->
+             <div class="text-center">
+            <a href="sublist.do?page=${curpage>1?curpage-1:curpage }&category2=${category2}" class="btn btn-sm btn-success">이전</a>
+              ${curpage } page / ${totalpage } pages
+            <a href="sublist.do?page=${curpage<totalpage?curpage+1:curpage }&category2=${category2}" class="btn btn-sm btn-info">다음</a>
+          </div>   
 	
 </body>
 </html>

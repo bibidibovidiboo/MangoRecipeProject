@@ -14,46 +14,57 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("shopping/")
+//@RequestMapping("shopping/")
 public class ShoppoingController {
 	@Autowired
 	private ShoppingDAO dao;
 	
 	@Autowired
+	private RecipeDAO rdao;
+	
+	@Autowired
 	private ShoppingReplyDAO sdao;
 	
 	// 가격 리스트
-	@RequestMapping("list.do")
-	public String shopping_list(Model model)
+	@RequestMapping("shopping/list.do")
+	public String shopping_list(String page,String category2,Model model)
 	{
-		/*if(page==null)
-			page="1";
-		int curpage=Integer.parseInt(page);
-		Map map=new HashMap();
-		int rowSize=12;
-		
-		int start=(rowSize*curpage)-(rowSize-1);
-		int end=rowSize*curpage;
-		map.put("start", start);
-		map.put("end", end);
-		
-		List<ShoppingVO> list=dao.shoppingListData(map);
-		
-		int totalpage=dao.shoppingTotalPage();
-		
-		model.addAttribute("curpage",curpage);
-		model.addAttribute("totalpage",totalpage);*/
+//		if(page==null)
+//			page="1";
+//		int curpage=Integer.parseInt(page);
+//		Map map=new HashMap();
+//		int rowSize=12;
+//		
+//		if(category2==null || category2.equals(""))
+//			category2="축산";
+//		
+//		int start=(rowSize*curpage)-(rowSize-1);
+//		int end=rowSize*curpage;
+//		map.put("start", start);
+//		map.put("end", end);
+//		map.put("category2",category2);
+//		
+//		List<ShoppingVO> list=dao.shoppingListData(map);
+//		
+//		int totalpage=dao.shoppingTotalPage(category2);
+//		
+//		
+//		model.addAttribute("model",model);
+//		model.addAttribute("curpage",curpage);
+//		model.addAttribute("totalpage",totalpage);
+//		model.addAttribute("list",list);
 		
 		return "shopping/list";
 	}
 	//sublist (Ajax)	
-	@RequestMapping("sublist.do")
+	@RequestMapping("shopping/sublist.do")
 	public String shopping_sublist(String page,String category2,Model model)
 	{
 		if(page==null)
 			page="1";
 		int curpage=Integer.parseInt(page);
 		int rowSize=12;
+		System.out.println("page는?:"+page);
 		
 		int start=(rowSize*curpage)-(rowSize-1);
 		int end=rowSize*curpage;
@@ -68,6 +79,8 @@ public class ShoppoingController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("category2",category2);
+		
+		
 		//안치훈
 //		List<ShoppingVO> svo=dao.shoppingCateData(category2);
 		
@@ -86,70 +99,104 @@ public class ShoppoingController {
 	
 	
 	// 상세보기
-	@RequestMapping("detail.do")
-	public String shopping_detail(int no,String page,String category3,String title,Model model)
+	@RequestMapping("shopping/detail.do")
+	public String shopping_detail(int no,String category3,Model model)
 	{
-		System.out.println("category3"+category3);
+		
+		
+		System.out.println("디테일 no값"+no);
+		System.out.println("디테일 category3값"+category3);
 		ShoppingVO vo=dao.shoppingDetailData(no);
+		
 		//상세보기 레시피데이터
 		List<RecipeVO> rList=dao.shoppingRecipeData(category3);
+		System.out.println("category3"+category3);
+
 		
-		//상세보기 댓글추가
-		if(page==null)
-			page="1";
-		int curpage=Integer.parseInt(page);
-		List<ShoppingReplyVO> sList= sdao.ShoppingReplyListData(no, curpage);
+		// 그래프 출력
+		System.out.println("no값은  :"+no);
+		System.out.println("?");
+		ShoppingReplyVO svo=dao.productGraphData(no);
+
+		System.out.println("??");
+
+		List<ShoppingReplyVO> sList= sdao.replyListData(no);
 		System.out.println("sList사이즈는"+sList.size());
+		
 		model.addAttribute("rList",rList);
 		model.addAttribute("sList",sList);
 		model.addAttribute("vo",vo);
+		model.addAttribute("svo",svo);	
+		model.addAttribute("model",model);
 		return "shopping/detail";
 	}
 	
-	
-	//카테고리 분류
-	/*@RequestMapping("cate.do")
-	public String shopping_cate(String category2,Model model)
+	//상세보기페이지 레시피 상세보기 넘어가기
+	@RequestMapping("recipe/detail2.do")
+	public String recipe_detail(int rno,Model model)
 	{
-		List<ShoppingVO> list = dao.shoppingCateDate(category2);
-		model.addAttribute("list",list);
-		return "shopping/sublist";	
-	}*/
+		RecipeVO vo=rdao.recipeDetailData(rno);
+		System.out.println("rno값은??="+rno);
+		model.addAttribute("vo",vo);
+		return "redirect:../recipe/detail.do";
+		
+	}
+	
 	
 	// 상세보기 내 댓글추가
-	@RequestMapping("ShoppingReply_insert.do")
-	public String ShoppingReply_insert(RedirectAttributes attr,int cno,int good,int soso,int bad,String msg,HttpSession session)
+	@RequestMapping("shopping/shoppingReply_insert.do")
+	public String ShoppingReply_insert(HttpSession session,String i,String j,String k,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
 	{
-		String id=(String)session.getAttribute("id");
+		   String id=(String)session.getAttribute("id");
 		   String name=(String)session.getAttribute("name");
-		   ShoppingReplyVO vo=new ShoppingReplyVO();
-		   vo.setCno(cno);
-		   vo.setMsg(msg);
-		   vo.setId(id);
-		   vo.setName(name);
-		   vo.setGood(good);
-		   vo.setSoso(soso);
-		   vo.setBad(bad);
-		   sdao.replyInsert(vo);
-		   attr.addAttribute("no", cno);
-		   //attr.addFlashAttribute(arg0) : Object(VO,List)
+		   svo.setId(id);
+		   svo.setName(name);
+		   System.out.println("category3:"+vo.getCategory3());
+		   System.out.println("cno :"+svo.getCno());
+		   
+		   if(i!=null)
+		   {
+			   svo.setGood(1);
+		   }
+		   else if(j!=null)
+		   {
+			   svo.setSoso(1);
+		   }
+		   else if(k!=null)
+		   {
+			   svo.setBad(1);
+		   }
+		   
+//		   vo.setNo(no);
+//		   vo.setCno(cno);
+//		   vo.setGood(good);
+//		   svo.setSoso(soso);
+//		   svo.setBad(bad);
+//		   vo.setMsg(msg);
+		   System.out.println("good???"+svo.getGood());
+		   sdao.shoppingReply_insert(svo);
+		   as.addAttribute("no",svo.getCno());
+		   as.addAttribute("category3",vo.getCategory3());
 		   return "redirect:../shopping/detail.do";
 	}
 	//댓글 삭제
-	@RequestMapping("ShoppingReply_delete.do")
-	public String ShoppingReply_delete(RedirectAttributes attr,int no,int cno)
+	@RequestMapping("shopping/shoppingReply_delete.do")
+	public String ShoppingReply_delete(int no,String category3,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
 	{
-		sdao.ShoppingReplyDelete(no);
-		attr.addAttribute("no", no);//GET 
-		return "redirect:../shopping/detail.do";
+		System.out.println("no값은???????:"+no);
+		sdao.shoppingReply_delete(no);
+		as.addAttribute("no",svo.getCno());
+		as.addAttribute("category3",vo.getCategory3());
+		return "redirect:../shopping/detail.do?";
 	}
 	//댓글 수정
-	@RequestMapping("ShoppingReply_update.do")
-	public String ShoppingReply_update(RedirectAttributes attr,int no,int cno,String msg)
+	@RequestMapping("shopping/shoppingReply_update.do")
+	public String ShoppingReply_update(int no,String msg,String category3,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
 	{
-		sdao.ShoppingReplyUpdate(no, msg);
-		attr.addAttribute("no", no);
-		return "redirect:../shopping/detail.do";
+		sdao.shoppingReply_update(no);
+		as.addAttribute("no",svo.getCno());
+		as.addAttribute("category3",vo.getCategory3());
+		return "redirect:../shopping/detail.do?";
 	}
 	
 	
