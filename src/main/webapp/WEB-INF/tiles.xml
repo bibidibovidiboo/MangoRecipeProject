@@ -20,6 +20,9 @@
   	</definition>
   	<definition name="find" template="/WEB-INF/recommand/find.jsp">
 	</definition>
+	<definition name="sublist" template="/WEB-INF/shopping/sublist.jsp">
+  	</definition>
+	
 <!-- 
 	단독으로 띄우기
 	<definition name="login" template="/WEB-INF/member/login.jsp"></definition> 
