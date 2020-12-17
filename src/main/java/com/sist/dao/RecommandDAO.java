@@ -20,4 +20,18 @@ public class RecommandDAO {
 	  {
 		  return mapper.weatherDetailData(rno);
 	  }
+	  
+	  public List<String> recipeTitleData()
+	     {
+	    	 return mapper.recipeTitleData();
+	     }
+	     public List<RestaurantVO> recommandFindData(String title)
+	     {
+	    	 return mapper.recommandFindData(title);
+	     }
+	     
+	     
+	     
+	     
+	 
 	}

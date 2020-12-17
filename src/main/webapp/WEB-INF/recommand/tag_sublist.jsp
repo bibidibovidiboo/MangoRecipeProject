@@ -6,24 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+   $('.recomm').click(function(){
+      let fd=$(this).text();
+      $.ajax({
+         type:'post',
+         url:'../recommand/find.do',
+         data:{"fd":fd},
+         success:function(result)
+         {
+            $('#print').html(result);
+         }
+      });
+   })
+});
+</script>
 </head>
 <body>
-  <c:forEach var="s" items="${ss }">
-  	<span class="btn btn-xs" style="margin-bottom: 5px; border: solid 2px rgba(226, 108, 12, 0.7); ">${s }</span>&nbsp;
-  </c:forEach>
+<div class="sublist" style="width: 1000px;">
+      <div class="container" style="width: 1000px;">
+        <div class="subtag" style="text-align: center;">
+          <c:forEach var="s" items="${ss }">
+            <span class="btn btn-xs recomm" style="margin-bottom: 5px; border: solid 2px rgba(226, 108, 12, 0.7); ">${s }</span>&nbsp;
+          </c:forEach>
+      </div>
+      <div style="height: 15px"></div>
+      </div>
+      <div class="row" id="print">
+      
+      </div>
+</div>
   
-  
-<%--  <div class="container">
-            <div class="row" style="margin-bottom: 80px;">
-                    <c:forEach var="vo" items="${list }">
-	    	            <div class="col-lg-6" style="margin-bottom: 30px;">
-		                    <div class="weatherList" style=" height: 150px; background-color: #FDF3EA;">
-		                      <img src="${vo.img }" style="width: 150px; height: 150px; margin-right: 20px;">
-		                      <a href="weather_detail.do?rno=${vo.rno }" style="color: black; font-weight: border;">${vo.title }</a>
-		                    </div>
-		                </div>
-                    </c:forEach>
-            </div>
-        </div> --%>
 </body>
 </html>

@@ -15,4 +15,10 @@ public interface RecommandMapper {
   @Select("SELECT * FROM recipe_table WHERE rno=#{rno}")
 	public RecipeVO weatherDetailData(int rno);
   
+  
+  @Select("SELECT DISTINCT title FROM restaurant_data")
+  public List<String> recipeTitleData();
+  
+  @Select("SELECT no,title,poster FROM restaurant_data WHERE title=#{title}")
+  public List<RestaurantVO> recommandFindData(String title);
 }

@@ -19,6 +19,14 @@ public class RestaurantDAO {
 	{
 		return mapper.restaurantDetailData(no);
 	}
+	
+	
+	// kotlin
+	
+	public List<RestaurantVO> restaurantCateListData()
+	{
+		return mapper.restaurantCateListData();
+	}
 
 
 }

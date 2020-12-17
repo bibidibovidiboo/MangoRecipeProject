@@ -7,13 +7,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 import com.sist.dao.*;
+import com.sist.recommand.NaverBlogFind;
+import com.sist.recommand.RecommandManager;
+import com.sist.recommand.RecommandVO;
+import com.sist.vo.ChefVO;
 import com.sist.vo.RecipeVO;
+import com.sist.vo.ChefRecipeVO;
 
 @Controller
 @RequestMapping("recommand/")
 public class RecommandController {
    @Autowired
    private RecommandDAO wdao;
+   @Autowired
+   private ChefDAO cdao;
+   @Autowired
+   private RecommandManager mgr;
+   @Autowired
+   private NaverBlogFind  nb;
+   
    
    @RequestMapping("weather_list.do")
    public String find_recipe(Model model)
@@ -24,15 +36,15 @@ public class RecommandController {
       String food="";
       if(wd.equals("흐림") || wd.equals("구름많음"))
       {
-    	  food="찌개"; 
+    	  food="찌개";
       }
       else if(wd.equals("비") || wd.equals("눈비"))
       {
-         food="전";
+         food="비";
       }
       else if(wd.equals("눈"))
       {
-         food="눈오는";
+         food="눈 오는";
       }
       else // 맑은날씨
       {
@@ -71,56 +83,87 @@ public class RecommandController {
 	@RequestMapping("tag_sublist.do")
 	public String recommand_tag_sublist(int no,Model model)
 	{
-		String s1="봄,여름,가을,겨울,맑은날,추운날,흐린날,비오는날,더운날,눈오는날";
-		String s2="외로움,슬픔,이별,설렘,밤,새벽,아침,사랑,짜증,그리움,추억,우울,행복,분노,기쁨,축하";
-		String s3="밝은,신나는,따뜻한,편안한,그루브한,부드러운,로맨틱한,잔잔한,몽환적인,시원한,애절한,어두운";
-		String s4="운동,드라이브,산책,퇴근길,휴가,거리,고백,해변";
-		
-		String data="";
-		int index=0;
-		if(no==1) {
-			data=s1;
-			index=10;
-		}
-		else if(no==2) {
-			data=s2;
-			index=16;
-		}
-		else if(no==3) {
-			data=s3;
-			index=12;
-		}
-		else if(no==4) {
-			data=s4;
-			index=9;
-		}
-		
-		String[] ss=new String[index];
-		StringTokenizer st=new StringTokenizer(data,",");
-		int i=0;
-		while(st.hasMoreTokens())
-		{
-			ss[i]=st.nextToken();
-			i++;
-		}
-		
-		
-		/*List<RecipeVO> list=wdao.foodLikeRecipeData(ss[i]);
-	      for(RecipeVO vo:list)
-		   {
-	    	  	String str=vo.getTitle();
-		  		if(str.length()>20)
-		  		{
-		  		    str=str.substring(0,20);
-		  		    str+="...";
-		  		}
-		  		vo.setTitle(str);
+		   String s1="봄,여름,가을,겨울,맑은,추운,흐린,비오는,더운,안개,눈 오는";
+		   String s2="아침,오후,저녁,밤,행복,사랑,기쁨,슬픔,지침,짜증,분노,그리움,추억,우울";
+		   String s3="밝은,신나는,따뜻,편안,부드러운,로맨틱,영화,잔잔,달콤,시원,어두운";
+		   String s4="친구,여행,데이트,휴식,산책,출근,퇴근,야근,휴가,운동,고백";
+		   String data="";
+		   int index=0;
+		   if(no==1){
+			   data=s1;
+			   index=11;
 		   }
-	      
-	    model.addAttribute("list", list);*/
+		   else if(no==2){
+			   data=s2;
+			   index=14;
+		   }
+		   else if(no==3){
+			   data=s3;
+			   index=11;
+		   }
+		   else if(no==4){
+			   data=s4;
+			   index=11;
+		   }
+		   
+		   String[] ss=new String[index];
+		   StringTokenizer st=new StringTokenizer(data,",");
+		   int i=0;
+		   while(st.hasMoreTokens())
+		   {
+			   ss[i]=st.nextToken();
+			   i++;
+		   }
+		   model.addAttribute("ss", ss);
+		   return "tag_sublist";
+	   }
+	   @RequestMapping("find.do")
+	   public String recommand_find(String fd,Model model)
+	   {
+		   nb.naverFindData(fd);// XML 제작
+		   List<RecommandVO> list=mgr.recommandData();
+		   List<RestaurantVO> fList=new ArrayList<RestaurantVO>();
+		   for(RecommandVO vo:list)
+		   {
+			   List<RestaurantVO> dList=wdao.recommandFindData(vo.getTitle());
+			   fList.add(dList.get(0));
+		   }
+		   model.addAttribute("fList", fList);
+		   return "find";
+	   }
+
+	   @RequestMapping("chef_list.do")
+		public String chef_list(String page,Model model)
+		{
+			if(page==null)
+				page="1";
+			int curpage=Integer.parseInt(page);
+			List<ChefVO> list=cdao.chefListData(curpage);
+			model.addAttribute("list", list);
+			return "recommand/chef_list";
+		}
 		
-		model.addAttribute("ss",ss);
-		return "tag_sublist";
-	}
+		@RequestMapping("chef_product.do")
+		public String chef_product(String chef,String page,String fd,Model model)
+		{
+			if(page==null)
+				page="1";
+			int curpage=Integer.parseInt(page);
+			List<ChefRecipeVO> list=new ArrayList<ChefRecipeVO>();
+			if(fd==null)
+			{
+				list=cdao.chefProductData(chef, curpage);
+			}
+			else
+			{
+				list=cdao.chefProductFindData(chef, fd);
+			}
+			
+			model.addAttribute("list", list);
+			model.addAttribute("chef", chef);
+			return "recommand/chef_product";
+		}
+	   
+	   
    
 }

@@ -6,11 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style type="text/css">
+.row{
+    font-family: 'Noto Sans KR', sans-serif;
+    }
 #wicon {
-	width: 70px;
-	height: 70px;
+	width: 60px;
+	height: 60px;
 	margin-left: 50px;
+	margin-bottom: 10px;
+}
+.weatherList{
+	width:390px; 
+	height: 150px; 
+	background-color: #FDF3EA; 
+	float: left;
+	padding: 30px;
+	color: gray;
+}
+h2{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: border;
+	color: black;
+	margin-left: 30px;
 }
 </style>
 </head>
@@ -20,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6" style="margin-bottom: 30px;"> 
-                  <h2>오늘의 요리 추천
+                  	<h2>오늘의 요리
 	                  <c:choose>
 				         <c:when test = "${wd eq '맑음'}">
 				            <img id=wicon alt="" src="../img/icon/sun.png">
@@ -44,7 +64,7 @@
 				            <img id=wicon alt="" src="../iimg/icon/cloudy.png">
 				         </c:otherwise>
 				      </c:choose>
-			      </h2>
+				    </h2>
                 </div>
             </div>
         </div>
@@ -73,9 +93,13 @@
             <div class="row" style="margin-bottom: 80px;">
                     <c:forEach var="vo" items="${list }">
 	    	            <div class="col-lg-6" style="margin-bottom: 30px;">
-		                    <div class="weatherList" style=" height: 150px; background-color: #FDF3EA;">
-		                      <img src="${vo.img }" style="width: 150px; height: 150px; margin-right: 20px;">
-		                      <a href="weather_detail.do?rno=${vo.rno }" style="color: black; font-weight: border;">${vo.title }</a>
+	    	            	<div style="float: left;">
+		                      <img src="${vo.img }" style="width: 150px; height: 150px;">
+		                    </div>
+		                    <div class="weatherList">
+		                      <a href="weather_detail.do?rno=${vo.rno }" style="color: black;"><font style="font-weight: border; font-size: 14pt;">${vo.title }</font></a><br><br>
+		                      <img src="../img/icon/cooktime.png" style="width:7%">&nbsp;${vo.cooktime }&nbsp;&nbsp;&nbsp;&nbsp;
+		                      <img src="../img/icon/level.png" style="width:7%">&nbsp;${vo.lvl }
 		                    </div>
 		                </div>
                     </c:forEach>

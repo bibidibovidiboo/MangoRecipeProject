@@ -13,8 +13,13 @@
 	<definition name="*/*/*" extends="main">
 		<put-attribute name="content" value="/WEB-INF/{1}/{2}/{3}.jsp"/>
 	</definition>
+	
+	
+	<!-- 따로 등록 -->
 	<definition name="tag_sublist" template="/WEB-INF/recommand/tag_sublist.jsp">
   	</definition>
+  	<definition name="find" template="/WEB-INF/recommand/find.jsp">
+	</definition>
 <!-- 
 	단독으로 띄우기
 	<definition name="login" template="/WEB-INF/member/login.jsp"></definition> 
