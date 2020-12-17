@@ -5,6 +5,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,8 @@ import com.sist.dao.LoginDAO;
 public class LoginRestController {
 	@Autowired
 	private LoginDAO dao;
+
+	
 	 @RequestMapping("main/login.do")
 	   public String main_login(String id,String pwd,HttpSession session)
 	   {
@@ -37,5 +40,8 @@ public class LoginRestController {
 		   }
 		   return result;
 	   }
+	 
+	
+	 
 	 
 }

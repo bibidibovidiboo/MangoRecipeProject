@@ -16,6 +16,7 @@ import java.util.*;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.sist.vo.RecipeIngreVO;
 import com.sist.vo.RecipeVO;
 public interface RecipeMapper {
 	/*@Select("SELECT * "
@@ -34,6 +35,10 @@ public interface RecipeMapper {
 			+"WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> recipeListData(Map map);
 	
+	@Select("SELECT img,title,chef,people FROM recipe_table WHERE title=#{title}")
+	public List<RecipeVO> recipeRefridgeListData(String title);
+	
+	
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM recipe_table")
 	public int recipeTotalPage();
 	
@@ -41,6 +46,9 @@ public interface RecipeMapper {
 			+ "WHERE rno=#{rno}")
 	public RecipeVO recipeDetailData(int rno);
 	
+//	@Select("SELECT * FROM ingre_table "
+//			+ "WHERE rno=#{rno}")
+//	public RecipeIngreVO recipeIngreData(int rno);
 	
 }
 	

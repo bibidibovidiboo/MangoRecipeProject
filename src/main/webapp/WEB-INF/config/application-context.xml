@@ -16,6 +16,21 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<context:component-scan base-package="com.sist.*"/>
+	
+	<mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <!-- @ResponseBody Content-Type:application/json;charset=UTF-8  -->
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	            <property name="supportedMediaTypes">
+	                <list>
+	                    <value>text/html;charset=UTF-8</value>
+	                </list>
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
 	<bean id="dbcon"
         class="com.sist.common.DBConnection"
         c:driver="oracle.jdbc.driver.OracleDriver"
