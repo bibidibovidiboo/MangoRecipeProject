@@ -29,31 +29,7 @@ public class ShoppoingController {
 	@RequestMapping("shopping/list.do")
 	public String shopping_list(String page,String category2,Model model)
 	{
-//		if(page==null)
-//			page="1";
-//		int curpage=Integer.parseInt(page);
-//		Map map=new HashMap();
-//		int rowSize=12;
-//		
-//		if(category2==null || category2.equals(""))
-//			category2="축산";
-//		
-//		int start=(rowSize*curpage)-(rowSize-1);
-//		int end=rowSize*curpage;
-//		map.put("start", start);
-//		map.put("end", end);
-//		map.put("category2",category2);
-//		
-//		List<ShoppingVO> list=dao.shoppingListData(map);
-//		
-//		int totalpage=dao.shoppingTotalPage(category2);
-//		
-//		
-//		model.addAttribute("model",model);
-//		model.addAttribute("curpage",curpage);
-//		model.addAttribute("totalpage",totalpage);
-//		model.addAttribute("list",list);
-		
+
 		return "shopping/list";
 	}
 	//sublist (Ajax)	
@@ -80,17 +56,9 @@ public class ShoppoingController {
 		map.put("end", end);
 		map.put("category2",category2);
 		
-		
-		//안치훈
-//		List<ShoppingVO> svo=dao.shoppingCateData(category2);
-		
-		
 		List<ShoppingVO> list=dao.shoppingListData(map);
-//		List<ShoppingVO> list=dao.shoppingCateData(category2);
-		
 		
 		model.addAttribute("model",model);
-		
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
 		model.addAttribute("list",list);
@@ -102,14 +70,12 @@ public class ShoppoingController {
 	@RequestMapping("shopping/detail.do")
 	public String shopping_detail(int no,String category3,Model model)
 	{
-		
-		
 		System.out.println("디테일 no값"+no);
 		System.out.println("디테일 category3값"+category3);
 		ShoppingVO vo=dao.shoppingDetailData(no);
 		
 		//상세보기 레시피데이터
-		List<RecipeVO> rList=dao.shoppingRecipeData(category3);
+		List<RecipeVO> rList=dao.shoppingRecipeData(vo.getCategory3());
 		System.out.println("category3"+category3);
 
 		
@@ -144,7 +110,7 @@ public class ShoppoingController {
 	
 	
 	// 상세보기 내 댓글추가
-	@RequestMapping("shopping/shoppingReply_insert.do")
+	@RequestMapping("/shopping/shoppingReply_insert.do")
 	public String ShoppingReply_insert(HttpSession session,String i,String j,String k,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
 	{
 		   String id=(String)session.getAttribute("id");
@@ -167,12 +133,6 @@ public class ShoppoingController {
 			   svo.setBad(1);
 		   }
 		   
-//		   vo.setNo(no);
-//		   vo.setCno(cno);
-//		   vo.setGood(good);
-//		   svo.setSoso(soso);
-//		   svo.setBad(bad);
-//		   vo.setMsg(msg);
 		   System.out.println("good???"+svo.getGood());
 		   sdao.shoppingReply_insert(svo);
 		   as.addAttribute("no",svo.getCno());
@@ -180,27 +140,46 @@ public class ShoppoingController {
 		   return "redirect:../shopping/detail.do";
 	}
 	//댓글 삭제
-	@RequestMapping("shopping/shoppingReply_delete.do")
-	public String ShoppingReply_delete(int no,String category3,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
+	@RequestMapping("/shopping/shoppingReply_delete.do")
+	public String shoppingReply_delete(RedirectAttributes attr,ShoppingReplyVO vo)
 	{
-		System.out.println("no값은???????:"+no);
-		sdao.shoppingReply_delete(no);
-		as.addAttribute("no",svo.getCno());
-		as.addAttribute("category3",vo.getCategory3());
-		return "redirect:../shopping/detail.do?";
+		System.out.println("no는 뭐?"+vo.getNo());
+		System.out.println("cno는 뭐??"+vo.getCno());
+		sdao.shoppingReply_delete(vo);
+//		as.addAttribute("no",svo.getCno());
+//		as.addAttribute("category3",vo.getCategory3());
+		attr.addAttribute("no",vo.getCno());
+		return "redirect:../shopping/detail.do";
 	}
 	//댓글 수정
-	@RequestMapping("shopping/shoppingReply_update.do")
-	public String ShoppingReply_update(int no,String msg,String category3,ShoppingReplyVO svo,ShoppingVO vo,RedirectAttributes as)
+	@RequestMapping("/shopping/shoppingReply_update.do")
+	public String shoppingReply_update(RedirectAttributes attr,ShoppingReplyVO vo,HttpSession session,String i,String j,String k)
 	{
-		sdao.shoppingReply_update(no);
-		as.addAttribute("no",svo.getCno());
-		as.addAttribute("category3",vo.getCategory3());
-		return "redirect:../shopping/detail.do?";
+		 String id=(String)session.getAttribute("id");
+		 String name=(String)session.getAttribute("name");
+		 vo.setId(id);
+		 vo.setName(name);
+		 
+		 if(i!=null)
+		   {
+			   vo.setGood(1);
+		   }
+		   else if(j!=null)
+		   {
+			   vo.setSoso(1);
+		   }
+		   else if(k!=null)
+		   {
+			   vo.setBad(1);
+		   }
+		System.out.println("cno값은??????????????"+vo.getCno()); 
+		System.out.println("no값은??????????????"+vo.getNo()); 
+		sdao.shoppingReply_update(vo);
+//		as.addAttribute("no",svo.getCno());
+//		as.addAttribute("category3",vo.getCategory3());
+		attr.addAttribute("no", vo.getCno());
+//		attr.addAttribute("no", vo.getNo());
+		return "redirect:../shopping/detail.do";
 	}
-	
-	
-	
-	
-	
+		
 }

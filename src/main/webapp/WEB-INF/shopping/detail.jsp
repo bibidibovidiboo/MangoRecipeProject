@@ -9,22 +9,41 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['선호도', '댓글'],
-          ['좋아요',     <c:out value="${svo.good}"/>],
-          ['괜찮다',      <c:out value="${svo.soso}"/>],
-          ['별로',  <c:out value="${svo.bad}"/>]
-        ]);
-        var options = {
-          title: '댓글 분석',
-          is3D:true
-        };
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      chart.draw(data, options);
-     }
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+		    ['선호도', '댓글'],
+		    ['좋아요',     <c:out value="${svo.good}"/>],
+		    ['괜찮다',      <c:out value="${svo.soso}"/>],
+		    ['별로',  <c:out value="${svo.bad}"/>]
+		  ]);
+		  var options = {
+		    title: '댓글 분석',
+		    is3D:true
+		  };
+		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		chart.draw(data, options);
+		}
+      let u=0;
+      $(function(){
+    	  $('.up').click(function(){
+    		 $('.updates').hide();
+    		 let no=$(this).attr("value");
+    		 if(u==0)
+    		 {
+    			 $('#u'+no).show();
+    			 $(this).text("취소");
+    			 u=1;
+    		 }
+    		 else
+    		 {
+    			 $('#u'+no).hide();
+    			 $(this).text("수정");
+    			 u=0;
+    		 }
+    	  });
+      })
 </script>
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -98,7 +117,7 @@
                         </tr>&nbsp;&nbsp;&nbsp;&nbsp;
 						<tr>
 						<table class="table">                       
-                            <h3 class="text-center">이런 요리 어떠세요?</h3>&nbsp;
+                            <h4 class="text-center"><b>이런 요리 어떠세요?</b></h4>&nbsp;
                             <c:forEach var="vo" items="${rList }">
                             	<tr>
                             		<td>
@@ -112,28 +131,7 @@
                            </table>
                        </tr>
                        </div>
-                        <!-- <div class="product__details__thumb">
-                            <div class="pt__item active">
-                                <img data-imgbigurl="img/shop/details/product-big-2.jpg"
-                                src="img/shop/details/product-big-2.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-1.jpg"
-                                src="img/shop/details/product-big-1.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-4.jpg"
-                                src="img/shop/details/product-big-4.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-3.jpg"
-                                src="img/shop/details/product-big-3.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-5.jpg"
-                                src="img/shop/details/product-big-5.jpg" alt="">
-                            </div>
-                        </div> -->
+            
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -143,19 +141,22 @@
                         <a href="${vo.link }"><h4>${vo.title}</h4></a>
                         <h5>${vo.lprice }원</h5>
                         <a href="${vo.link }" class="primary-btn">최저가 구매하기</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         
-            <!-- 댓글 -->            
+            <!-- 댓글 -->
+            <h4 class="text-center">구매후기</h4>            
             <table class="table">
               <tr>
                <td>
+               <div style="overflow-x:hidden; width:100%; height:300px;">
                  <c:forEach var="vo" items="${sList }">
                    <table class="table table-striped">
                     <tr>
                      <td class="text-left">◑${vo.name }(${vo.dbday })</td>
                      <td class="text-right">
                       <c:if test="${sessionScope.id==vo.id }">
-                       <a href="shopping/shoppingReply_update.do?no=${vo.cno }&cno=${vo.no}" class="btn btn-xs btn-success">수정</a>
-                       <a href="../shopping/shoppingReply_delete.do?no=${vo.cno }&cno=${vo.no}" class="btn btn-xs btn-info">삭제</a>
+                      <span value="${vo.no }" class="btn btn-xs product__label up">수정</span>
+                       <a href="../shopping/shoppingReply_delete.do?no=${vo.no }&cno=${vo.cno}" class="btn btn-xs product__label">삭제</a>
                       </c:if>
                      </td>
                     </tr>
@@ -164,19 +165,24 @@
                        <pre style="white-space: pre-wrap;border:none;background-color: white">${vo.msg }</pre>
                       </td>
                     </tr>
-                    <tr class="updates" id="${vo.no }" style="display:none">
+                    <tr class="updates" id="u${vo.no }" style="display:none">
 		               <td colspan="2">
-		                 <form method="post" action="../shopping/shoppingReply_update.do">
-			                 <input type="hidden" name="cno" value="${vo.no }">
-			                 <input type="hidden" name="no" value="${svo.no }">
-			                 <textarea rows="3" cols="63" name="msg" style="float: left">${vo.msg }</textarea>
-			                 <input type=submit value="댓글수정" class="btn btn-sm btn-"
+		                 <form method="post" action="../shopping/shoppingReply_update.do?no=${vo.no }&cno=${vo.cno}">
+		                  	<input type=checkbox name=i value="${vo.good }">좋아요
+			         		<input type=checkbox name=j value="${vo.soso }">괜찮다
+			         		<input type=checkbox name=k value="${vo.bad }">별로
+			         		
+			                 <input type="hidden" name="cno" value="${vo.cno }">
+<%-- 			                 <input type="hidden" name="no" value="${vo.no }"> --%>
+			                 <textarea rows="3" cols="43" name="msg" style="float: left">${vo.msg }</textarea>
+			                 <input type=submit value="댓글수정" class="product__label"
 			                  style="float: right;height: 73px">
 		                  </form>
 		               </td>
 		              </tr>
                    </table>
                </c:forEach>
+               </div>
                </td>
               </tr>
             </table>
@@ -187,7 +193,6 @@
 	                 <input type=checkbox name=i value="${svo.good }">좋아요
 			         <input type=checkbox name=j value="${svo.soso }">괜찮다
 			         <input type=checkbox name=k value="${svo.bad }">별로<br>
-			         
 	                 <input type="hidden" name="cno" value="${vo.no }">
 	                 <input type="hidden" name="category3" value="${vo.category3}">
 	                 <textarea rows="3" cols="45" name="msg" style="float: left"></textarea>
@@ -204,15 +209,7 @@
                </td>
              </tr>
             </table>
-                        <!-- <div class="product__details__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="2">
-                                </div>
-                            </div> -->
-                        
-                            <!-- <a href="#" class="primary-btn">Add to cart</a>
-                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a> -->
+              
                         </div>
                     </div>
                 </div>

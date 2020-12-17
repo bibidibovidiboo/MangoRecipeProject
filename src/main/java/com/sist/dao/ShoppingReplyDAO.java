@@ -24,15 +24,15 @@ public class ShoppingReplyDAO {
    }
    
    //댓글 삭제
-   public void shoppingReply_delete(int no)
+   public void shoppingReply_delete(ShoppingReplyVO vo)
    {
-	   mapper.shoppingReplyDeletData(no);
+	  mapper.shoppingReplyDeleteData(vo);
    }
    
    //댓글 수정
-   public void shoppingReply_update(int no)
+   public void shoppingReply_update(ShoppingReplyVO vo)
    {
-	   mapper.shoppingReplyDeletData(no);
+	   mapper.shoppingReplyUpdateData(vo);
    }
    
    

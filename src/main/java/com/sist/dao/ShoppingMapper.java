@@ -52,21 +52,20 @@ public interface ShoppingMapper {
 			 +"ORDER BY no DESC")
 	 public List<ShoppingReplyVO> shoppingReplyListData(int no);
 	 
-	 //@Select("SELECT NVL(MAX(no)+1,1) as no FROM shopping_reply")
-	 
 	 //댓글 추가
 	 @Insert("INSERT INTO shopping_reply(no,cno,id,name,msg,good,soso,bad) values(shopping_reply_seq.NEXTVAL,#{cno},#{id},#{name},#{msg},#{good},#{soso},#{bad})")
 	 public void shoppingReplyInsertData(ShoppingReplyVO vo);
 	
 	 //댓글 삭제
-	 @Delete("DELETE FROM shopping_reply where cno=#{no}")
-	 public void shoppingReplyDeletData(int no);
+	 @Delete("DELETE FROM shopping_reply where no=#{no} AND cno=#{cno}")
+	 public void shoppingReplyDeleteData(ShoppingReplyVO vo);
 	 
 	 //댓글 수정
-	 @Update("UPDATE shopping_reply SET where no=#{no}")
-	 public void shoppingReplyUpdateData(int no);
+	 @Update("UPDATE shopping_reply SET no=#{no},cno=#{cno},id=#{id},name=#{name},msg=#{msg},good=#{good},soso=#{soso},bad=#{bad} where cno=#{cno} AND no=#{no}")
+	 public void shoppingReplyUpdateData(ShoppingReplyVO vo);
 	
-	// 상품 평가 데이터 불러오기
+	 
+	// 파이그래프
 	@Select("SELECT SUM(good) as good,"
 			+ "SUM(soso) as soso,"
 			+ "SUM(bad) as bad "
