@@ -123,24 +123,10 @@ public class CBoardController {
 	   return "redirect:detail.do?no="+cno;
    }
    
-   // 로그인 
-   /*@RequestMapping("login.do")
-   public String board_login()
+   @RequestMapping("mart.do")
+   public String mart()
    {
-	   return "community/login";
+	   return "community/mart";
    }
-   
-   @RequestMapping("login_ok.do")
-   public String board_login_ok(String id,String pwd,Model model,HttpSession session)
-   {
-	  MemberVO vo=dao.memberLogin(id, pwd);
-	   if(vo.getMessage().equals("OK"))
-	   {
-		   session.setAttribute("id", id);
-		   session.setAttribute("name", vo.getName());
-	   }
-	   model.addAttribute("msg", vo.getMessage());
-	   return "community/login_ok";
-   }*/
    
 }
