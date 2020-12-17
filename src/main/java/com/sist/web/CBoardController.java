@@ -20,6 +20,7 @@ public class CBoardController {
    @RequestMapping("list.do")
    public String board_list(String page,Model model)
    {
+	   System.out.println(1111);
 	   if(page==null)
 		   page="1";
 	   int curpage=Integer.parseInt(page);
@@ -67,10 +68,19 @@ public class CBoardController {
    @RequestMapping("update_ok.do")
    public String board_update_ok(CBoardVO vo,Model model)
    {
+	   try {
 	   boolean bCheck=dao.boardUpdate(vo);
 	   model.addAttribute("bCheck", bCheck);
+	   System.out.println("bCheck:"+bCheck);
 	   model.addAttribute("no", vo.getNo());
-	   return "community/update_ok";//ajax
+	   }catch (Exception e) {
+		   e.printStackTrace();
+	   }
+	   
+	   return "community/update_ok";
+	 
+	   // return "redirect:../community/list.do";
+	   
    }
    
    @RequestMapping("delete.do")
@@ -113,24 +123,10 @@ public class CBoardController {
 	   return "redirect:detail.do?no="+cno;
    }
    
-   // 로그인 
-   /*@RequestMapping("login.do")
-   public String board_login()
+   @RequestMapping("mart.do")
+   public String mart()
    {
-	   return "community/login";
+	   return "community/mart";
    }
-   
-   @RequestMapping("login_ok.do")
-   public String board_login_ok(String id,String pwd,Model model,HttpSession session)
-   {
-	  MemberVO vo=dao.memberLogin(id, pwd);
-	   if(vo.getMessage().equals("OK"))
-	   {
-		   session.setAttribute("id", id);
-		   session.setAttribute("name", vo.getName());
-	   }
-	   model.addAttribute("msg", vo.getMessage());
-	   return "community/login_ok";
-   }*/
    
 }

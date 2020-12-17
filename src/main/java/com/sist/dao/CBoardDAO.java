@@ -18,8 +18,8 @@ import com.sist.vo.*;
 public class CBoardDAO {
 	@Autowired
     private DBConnection dbConn;
-	private CallableStatement cs;//Procedure
-	private PreparedStatement ps;//SQL
+	private CallableStatement cs; // Procedure
+	private PreparedStatement ps; // SQL
 	
 	// 커뮤니티 게시판
 	public List<CBoardVO> boardListData(int page)
@@ -37,9 +37,8 @@ public class CBoardDAO {
 			cs.setInt(1, start);
 			cs.setInt(2, end);
 			cs.registerOutParameter(3, OracleTypes.CURSOR);
-			// 실행
 			cs.executeQuery();
-			// 데이터 받기
+
 			ResultSet rs=(ResultSet)cs.getObject(3);
 			while(rs.next())
 			{
@@ -53,7 +52,6 @@ public class CBoardDAO {
 			}
 			rs.close();
 		}catch(Exception ex){}
-		// dbConn.disConnection
 		return list;
 	}
 	
@@ -75,7 +73,6 @@ public class CBoardDAO {
 	public CBoardVO boardDetailData(int no)
 	{
 		CBoardVO vo=new CBoardVO();
-		// getConnection() => @Before
 		try
 		{
 			String sql="{CALL communityBoardDetailData(?,?)}";
@@ -94,24 +91,19 @@ public class CBoardDAO {
 			vo.setHit(rs.getInt(6));
 			rs.close();
 		}catch(Exception ex){}
-		// disConnection() => @After
 		return vo;
 	}
 	
 	public CBoardVO boardUpdateData(int no)
 	{
 		CBoardVO vo=new CBoardVO();
-		// getConnection() => Before
 		try
 		{
 			String sql="{CALL communityBoardUpdateData(?,?)}";
 			cs=dbConn.getConn().prepareCall(sql);
-			// 실행 요청 ?에 값을 채운다 
 			cs.setInt(1, no);
-			// OUT => 저장 공간을 만들어 준다 
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			cs.executeQuery();
-			// 저장공간에서 값을 가지고 온다 
 			ResultSet rs=(ResultSet)cs.getObject(2);
 			rs.next();
 			vo.setNo(rs.getInt(1));
@@ -120,19 +112,16 @@ public class CBoardDAO {
 			vo.setContent(rs.getString(4));
 			rs.close();
 			
-		}catch(Exception ex){/*AfterThrowing*/} // AOP에서 처리 
-		// disConnection() => After
+		}catch(Exception ex){ } // AOP에서 처리 
 		return vo; // AfterReturning
 	}
 	
 	public boolean boardUpdate(CBoardVO vo)
 	{
 		boolean bCheck=false;
-		// dbConn.getConnection()
 		try
 		{
 			String sql="{CALL communityBoardUpdate(?,?,?,?,?,?)}";
-			// 전송 => 오라클 
 			
 			cs=dbConn.getConn().prepareCall(sql);
 			cs.setInt(1, vo.getNo());
@@ -143,12 +132,8 @@ public class CBoardDAO {
 			cs.registerOutParameter(6, OracleTypes.VARCHAR);
 			cs.executeQuery();
 			String result=cs.getString(6);
-			// Cursor => 자바(X) => ResultSet
 			bCheck=Boolean.parseBoolean(result);
-			// "10"
-		}catch(Exception ex){/*ex.printStackTrace();*/}
-		// dbConn.disConnection()
-		// System.out.println("obj="+obj);
+		}catch(Exception ex){ex.printStackTrace();}
 		return bCheck;
 	}
 	
@@ -191,7 +176,6 @@ public class CBoardDAO {
 	{
 		List<CReplyVO> list=
 				new ArrayList<CReplyVO>();
-		// dbConn.getConnection()
 		try
 		{
 			String sql="{CALL communityReplyListData(?,?,?,?,?)}";
@@ -206,7 +190,6 @@ public class CBoardDAO {
 			cs.registerOutParameter(5, OracleTypes.CURSOR);
 			cs.executeQuery();
 			ResultSet rs=(ResultSet)cs.getObject(5);
-			//no,type,cno,id,name,msg,TO_CHAR(regdate
 			while(rs.next())
 			{
 				CReplyVO vo=new CReplyVO();
@@ -221,13 +204,11 @@ public class CBoardDAO {
 			}
 			rs.close();
 		}catch(Exception ex){}
-		// dbConn.disConnection()
 		return list;
 	}
 	
 	public void replyInsert(CReplyVO vo)
 	{
-		// dbConn.getConnection()
 		try
 		{
 			String sql="{CALL communityReplyInsert(?,?,?,?,?)}";
@@ -240,7 +221,6 @@ public class CBoardDAO {
 			
 			cs.executeQuery();
 		}catch(Exception ex){}
-		//dbConn.disConnection()
 	}
 	
 	public void replyUpdate(int no,String msg)
@@ -266,58 +246,6 @@ public class CBoardDAO {
 		}catch(Exception ex){}
 	}
 	
-	// 로그인 부분
-	public MemberVO memberLogin(String id,String pwd)
-	{
-		MemberVO vo=new MemberVO();
-		try
-		{
-			dbConn.getConnection();
-			String sql="SELECT COUNT(*) FROM member "
-					  +"WHERE id=?";
-			ps=dbConn.getConn().prepareStatement(sql);
-			ps.setString(1, id);
-			ResultSet rs=ps.executeQuery();
-			rs.next();
-			int count=rs.getInt(1);
-			rs.close();
-			
-			if(count==0)//ID가 없는 상태
-			{
-				vo.setMessage("NOID");
-			}
-			else // ID가 존재하는 상태 
-			{
-				sql="SELECT pwd,name FROM member "
-				   +"WHERE id=?";
-				ps=dbConn.getConn().prepareStatement(sql);
-				ps.setString(1, id);
-				rs=ps.executeQuery();
-				rs.next();
-				String db_pwd=rs.getString(1);
-				String name=rs.getString(2);
-				rs.close();
-				
-				if(db_pwd.equals(pwd))//로그인
-				{
-					vo.setId(id);
-					vo.setName(name);
-					vo.setMessage("OK");
-				}
-				else//비밀번호가 틀린 경우
-				{
-					vo.setMessage("NOPWD");
-				}
-			}
-		}catch(Exception ex)
-		{
-			System.out.println(ex.getMessage());
-		}
-		finally
-		{
-			dbConn.disConnection();
-		}
-		return vo;
-	}
+
     
 }
