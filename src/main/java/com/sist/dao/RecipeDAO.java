@@ -29,4 +29,9 @@ public class RecipeDAO {
 	 */
 	
 	
+	public List<RecipeVO> recipeRefridgeListData(String title){
+		return mapper.recipeRefridgeListData(title);
+	}
+	
+	
 }

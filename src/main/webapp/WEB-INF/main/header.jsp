@@ -73,11 +73,10 @@
                                     <li><a href="#">Login/out</a> <span class="arrow_carrot-down"></span>
                                      	<ul>
                                      		<c:choose>
-                                     		<c:when test="${id==null }">
+                                     		<c:when test="${sessionScope.id==null }">
                                      			<li data-toggle="modal" data-target="#myModal">Login</li>
-                                     			<li>회원가입</li>
                                      		</c:when>
-                                     		<c:when test="${id!=null }">
+                                     		<c:when test="${sessionScope.id!=null }">
                                      		<a href="../main/logout.do"><li>Logout</li></a>
                                             </c:when>
                                             </c:choose>
@@ -110,7 +109,13 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../main/main.do">HOME</a></li>
-                            <li><a href="../fridge/fridge_main.do">MY냉장고</a></li>
+                            <li><a href="../fridge/fridge_main.do">식재료</a>
+                            	<ul class="dropdown">
+                            		<li><a href="../fridge/fridge_main.do">냉장고 등록</a></li>
+                                    <li><a href="../fridge/ingre_map.do">나의 냉장고</a></li>
+                                    <li><a href="../fridge/my_favorite.do">관심 식재료</a></li>
+                                </ul>
+                            </li>
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="../recommand/weather_list.do">추천</a>

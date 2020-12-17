@@ -15,6 +15,14 @@
 	</definition>
 	<definition name="tag_sublist" template="/WEB-INF/recommand/tag_sublist.jsp">
   	</definition>
+  	<definition name="ingre_map_detail" template="/WEB-INF/fridge/ingre_map_detail.jsp">
+  	</definition>
+  	<definition name="ingre_cate" template="/WEB-INF/fridge/ingre_cate.jsp">
+  	</definition>
+  	
+  	<definition name="buy_list" template="/WEB-INF/fridge/buy_list.jsp">
+  	</definition>
+  	
 <!-- 
 	단독으로 띄우기
 	<definition name="login" template="/WEB-INF/member/login.jsp"></definition> 

@@ -25,20 +25,19 @@ import org.apache.http.message.BasicNameValuePair;
 @Controller
 public class KakaoLoginController {
 	
-	
+
 	private final static String id = "f8c948f8dbdfe021e363a00a2c734e22"; 
     private final static String url = "http://localhost/web/kakaologin.do"; 
     
-    @RequestMapping(value = "/login.do")
-    public String loginview(Model model, HttpSession session) {
-        String kakaoUrl ="https://kauth.kakao.com/oauth/authorize?"
-        +"client_id="+id + "&redirect_uri="+url+"&response_type=code";
-        model.addAttribute("kakaoUrl",kakaoUrl);
-        //https://kauth.kakao.com/oauth/authorize?client_id=f8c948f8dbdfe021e363a00a2c734e22&redirect_uri=http://localhost/web/kakaologin.do&response_type=code
-        
-        return "login";
-    }
- 
+	
+	  public static String getAuthorizationUrl(){ 
+		  String kakaoUrl="https://kauth.kakao.com/oauth/authorize?" 
+				  		+"client_id="+id + "&redirect_uri="+url+
+				  		"&response_type=code"; 
+	  //https://kauth.kakao.com/oauth/authorize?client_id=f8c948f8dbdfe021e363a00a2c734e22&redirect_uri=http://localhost/web/kakaologin.do&response_type=code 
+		  return kakaoUrl;
+	}
+	 
  
     public static JsonNode getAccessToken(String autorize_code){ 
         final String RequestUrl = "https://kauth.kakao.com/oauth/token";
@@ -54,9 +53,6 @@ public class KakaoLoginController {
             post.setEntity(new UrlEncodedFormEntity(postParams));
             final HttpResponse response = client.execute(post);
             final int responseCode = response.getStatusLine().getStatusCode();
-            System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-            System.out.println("Post parameters : " + postParams);
-            System.out.println("Response Code : " + responseCode);
             
             //JSON 형태 반환값 처리
             ObjectMapper mapper = new ObjectMapper();
@@ -84,6 +80,7 @@ public class KakaoLoginController {
         try {
             final HttpResponse response = client.execute(post);
             final int responseCode = response.getStatusLine().getStatusCode();
+            
             System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
             System.out.println("Response Code : " + responseCode);
  
@@ -103,7 +100,7 @@ public class KakaoLoginController {
  
     }
     @RequestMapping(value="/kakaologin.do",method=RequestMethod.GET)
-    public String kakaologin(@RequestParam("code") String code,HttpSession session,Model model)throws Exception{
+    public String kakaologin(String code,HttpSession session,Model model) {
         JsonNode jsonToken = getAccessToken(code);
         String access_token = jsonToken.get("access_token").toString();
         JsonNode userInfo = getKakaoUserInfo(access_token);
@@ -111,7 +108,7 @@ public class KakaoLoginController {
         String name = userInfo.get("properties").get("nickname").toString();
         session.setAttribute("id", id);
         model.addAttribute("name",name);
-        return "redirect:main.do";
+        return "redirect:main/main.do";
     }
 
 }

@@ -21,7 +21,12 @@
       </repository>
    </repositories>
    <dependencies>
-   
+   <!-- XmlPullParser -->
+   <dependency>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3</artifactId>
+            <version>1.1.4c</version>
+        </dependency>
    <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
 <dependency>
     <groupId>org.codehaus.jackson</groupId>

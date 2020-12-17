@@ -6,6 +6,7 @@ public class MyFridgeListVO {
 	private int no;
 	private String title,id;
 	private Date regdate,deldate;
+	
 	public int getNo() {
 		return no;
 	}

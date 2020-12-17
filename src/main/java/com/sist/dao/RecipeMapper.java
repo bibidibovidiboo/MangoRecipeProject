@@ -35,6 +35,10 @@ public interface RecipeMapper {
 			+"WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> recipeListData(Map map);
 	
+	@Select("SELECT img,title,chef,people FROM recipe_table WHERE title=#{title}")
+	public List<RecipeVO> recipeRefridgeListData(String title);
+	
+	
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM recipe_table")
 	public int recipeTotalPage();
 	
