@@ -6,10 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.con {
+	background-image: url("https://blogfiles.pstatic.net/MjAyMDEyMThfMjg0/MDAxNjA4MjIxNzcwODA2.-67LVGLtyXnRdVCF_LxkZvNXePIg0qragsAWRb2fDI0g.OpOnKNb0bipaQaPF33ZQrD6QwwDGWCETAU7ok9uFGLYg.JPEG.hartring/bg_1.jpg");
+	background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 325%;
+}
+ul {
+	margin-bottom : 0px;
+}
+</style>
 </head>
 <body>
-<div class="latest-products">
-      <div style="height:130px"></div>
+<div class="latest-products con">  
+      <div style="height:86px"></div>
       <div class="container" id="root">
       </div>
       <script src="../mart/bundle.js"></script>
