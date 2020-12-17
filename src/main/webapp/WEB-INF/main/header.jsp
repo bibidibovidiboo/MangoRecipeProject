@@ -9,11 +9,15 @@
 <style type="text/css">
 .header__logo {
     left: 47%;
-    top: 22px;
+    top: 13px;
     width: 210px;
 }
 .header__menu ul li a {
-	font-weight: 400;
+    font-weight: 400;
+}
+.header__top__inner {
+    height: 84px;
+    padding-top: 25px;
 }
 </style>
 </head>
@@ -73,11 +77,13 @@
                                     <li><a href="#">Login/out</a> <span class="arrow_carrot-down"></span>
                                      	<ul>
                                      		<c:choose>
-                                     		<c:when test="${sessionScope.id==null }">
+                                     		<c:when test="${id==null }">
                                      			<li data-toggle="modal" data-target="#myModal">Login</li>
+                                     			<li>회원가입</li>
                                      		</c:when>
-                                     		<c:when test="${sessionScope.id!=null }">
+                                     		<c:when test="${id!=null }">
                                      		<a href="../main/logout.do"><li>Logout</li></a>
+                                     		<li>Logout</li>
                                             </c:when>
                                             </c:choose>
                                         </ul>
@@ -85,7 +91,7 @@
                                     </li>
                                     <c:if test="${sessionScope.id!=null }">
 	                                 	&nbsp;<span style="font-size:9.5pt"> ${id }님, 안녕하세요!</span>
-	                            	</c:if>
+	                            	  </c:if>
                                 </ul>
                             </div>
                              <div class="header__logo">
@@ -109,23 +115,21 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../main/main.do">HOME</a></li>
-                            <li><a href="../fridge/fridge_main.do">식재료</a>
-                            	<ul class="dropdown">
-                            		<li><a href="../fridge/fridge_main.do">냉장고 등록</a></li>
-                                    <li><a href="../fridge/ingre_map.do">나의 냉장고</a></li>
-                                    <li><a href="../fridge/my_favorite.do">관심 식재료</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="../fridge/fridge_main.do">MY냉장고</a></li>
                             <li><a href="../recipe/list.do">레시피</a></li>
                             <li><a href="../restaurant/resList.do">맛집</a></li>
                             <li><a href="../recommand/weather_list.do">추천</a>
                             	<ul class="dropdown">
                                     <li><a href="../recommand/weather_list.do">오늘의 요리</a></li>
-                                    <li><a href="../recommand/chef_list.do">셰프의 레시피</a></li>
                                     <li><a href="../recommand/tag_list.do">태그</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../community/list.do">커뮤니티</a></li>
+                            <li><a href="../community/list.do">커뮤니티</a>
+                            	<ul class="dropdown">
+                                    <li><a href="../community/mart.do">마트 검색</a></li>
+                                    <li><a href="../community/list.do">자유게시판</a></li>
+                                </ul>
+                            </li>
                             <li><a href="../shopping/list.do">최저가</a></li>
                         </ul>
                     </nav>
