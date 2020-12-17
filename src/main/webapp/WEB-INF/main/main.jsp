@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="../css/custom.css" type="text/css">
 
 <!-- kakao api -->
- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f40375643f0a41df8b2401ad0739717&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f40375643f0a41df8b2401ad0739717&libraries=services"></script>
 </head>
 
 <body>

@@ -126,7 +126,7 @@
                             </li>
                             <li><a href="../community/list.do">커뮤니티</a>
                             	<ul class="dropdown">
-                                    <li><a href="../community/mart.do">마트검색</a></li>
+                                    <li><a href="../community/mart.do">마트 검색</a></li>
                                     <li><a href="../community/list.do">자유게시판</a></li>
                                 </ul>
                             </li>
