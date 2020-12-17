@@ -13,19 +13,71 @@
 	background-repeat: no-repeat;
     background-size: contain;
     width: 100%;
-    height: 325%;
+    height: 185%;
 }
 ul {
 	margin-bottom : 0px;
 }
+li a:hover {
+	text-decoration: none;
+}
+p {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 300;
+    color: #111;
+}
+/* pagination */
+a{
+  text-decoration: none;
+}
+.pagination a{
+  font-size: 14px;
+}
+.pagination{
+  display: block;
+  margin-top: 68px;
+}
+.pagination ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.pagination a{
+  display: inline-block;
+  padding: 10px 18px;
+  color: #222;
+}
+.p1 a{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
+}
+.p1 a.is-active{
+  background-color: #f0f0f0;
+  border-radius: 100%;
+  color: #000;
+}
 </style>
 </head>
 <body>
-<div class="latest-products con">  
-      <div style="height:86px"></div>
+<div class="latest-products con" id="noto">  
+      <div style="height:84px"></div>
       <div class="container" id="root">
       </div>
       <script src="../mart/bundle.js"></script>
+      <div class="pagination p1 text-center">
+      		<ul>
+		        <a href="#"><li><</li></a>
+		        <a class="is-active" href="#"><li>1</li></a>
+		        <a href="#"><li>2</li></a>
+		        <a href="#"><li>3</li></a>
+		        <a href="#"><li>4</li></a>
+		        <a href="#"><li>5</li></a>
+		        <a href="#"><li>></li></a>
+      		</ul>
+    </div>
 </div>
 </body>
 </html>
