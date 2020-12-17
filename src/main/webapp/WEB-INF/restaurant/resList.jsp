@@ -8,20 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .box {
-	margin-top: 40px;
+   margin-top: 40px;
 }
 
 </style>
 </head>
 <body>
-	<section class="shop spad">
-	<div class="container">
-		<div class="shop__option">
-				<!-- ----------------------- 카테고리 중간------------------------------------------------------------------------------ -->
-				<div class="row">
+   <section class="shop spad">
+   <div class="container">
+      <div class="shop__option">
+            <!-- ----------------------- 카테고리 중간------------------------------------------------------------------------------ -->
+            <div class="row">
                     <div class="col-lg-5 col-md-5">
                         <div class="shop__option__search">
                             <form action="#">
@@ -40,8 +40,8 @@
                                 </form>
                                 </i></button>
                                 
-					               
-					             
+                              
+                            
                             </form>
                         </div>
                     </div>
@@ -59,71 +59,71 @@
       
                     </div>
                 </div>
-		
-				<!-- ---------------------------------- 식당 출력 --------------------------------------------------------------------------- -->
-	 	<div class="container">
-				<div class="box">
-					<c:forEach var="vo" items="${list }">
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<div class="product__item">
-								<div class="product__item__pic set-bg"
-									data-setbg="${vo.poster }">
-									<div class="product__label">
-										<a href="resDetail_before.do?no=${vo.no}"><span>${vo.title }</span></a>
-									</div>
-								</div>
-								<div class="product__item__text">
-									<h5>${fn:length(vo.addr)>18?fn:substring(vo.addr,0,18)+="...":vo.addr  }</h5>
-									<h5>${vo.type }</h5>
-								</div>
+      
+            <!-- ---------------------------------- 식당 출력 --------------------------------------------------------------------------- -->
+       <div class="container">
+            <div class="box">
+               <c:forEach var="vo" items="${list }">
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                     <div class="product__item">
+                        <div class="product__item__pic set-bg"
+                           data-setbg="${vo.poster }">
+                           <div class="product__label">
+                              <a href="resDetail_before.do?no=${vo.no}"><span>${vo.title }</span></a>
+                           </div>
+                        </div>
+                        <div class="product__item__text">
+                           <h5>${fn:length(vo.addr)>18?fn:substring(vo.addr,0,18)+="...":vo.addr  }</h5>
+                           <h5>${vo.type }</h5>
+                        </div>
 
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div> 
-	 		<div class="box2">
-			<div class="text-center">
-				<ul class="pagination">
-					<c:if test="${curpage>BLOCK }">
-						<li><a href="../restaurant/resList?page=${startPage-1 }">&lt;</a></li>
-					</c:if>
-					<c:forEach var="i" begin="${startPage }" end="${endPage }">
-						<c:if test="${i==curpage }">
-							<li class="active"><a href="../restaurant/resList?page=${i }">${i }</a></li>
-						</c:if>
-						<c:if test="${i!=curpage }">
-							<li><a href="../restaurant/resList.do?page=${i }">${i }</a></li>
-						</c:if>
-					</c:forEach>
-					<c:if test="${endPage<totalpage }">
-						<li><a href="../restaurant/resList.do?page=${endPage+1 }">&gt;</a></li>
-					</c:if>
-				</ul>
-			</div>
-		</div> 
+                     </div>
+                  </div>
+               </c:forEach>
+            </div>
+         </div> 
+          <div class="box2">
+         <div class="text-center">
+            <ul class="pagination">
+               <c:if test="${curpage>BLOCK }">
+                  <li><a href="../restaurant/resList?page=${startPage-1 }">&lt;</a></li>
+               </c:if>
+               <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                  <c:if test="${i==curpage }">
+                     <li class="active"><a href="../restaurant/resList?page=${i }">${i }</a></li>
+                  </c:if>
+                  <c:if test="${i!=curpage }">
+                     <li><a href="../restaurant/resList.do?page=${i }">${i }</a></li>
+                  </c:if>
+               </c:forEach>
+               <c:if test="${endPage<totalpage }">
+                  <li><a href="../restaurant/resList.do?page=${endPage+1 }">&gt;</a></li>
+               </c:if>
+            </ul>
+         </div>
+      </div> 
 
-			<div class="row1">
-					<h3>최근 본 식당</h3>
-					<c:forEach var="vo" items="${cList }" varStatus="s">
-						<c:if test="${s.index<6 }">
-							<div class="col-md-2">
-								<div class="thumbnail">
-									<a href="resDetail_before.do?no=${vo.no}"> <img
-										src="${vo.poster }" alt="Lights" style="width: 100%"
-										class="img-rounded">
-										<div class="caption">
-											<p style="font-size: 8pt">${vo.title }</p>
-										</div>
-									</a>
-								</div>
-							</div>
-						</c:if>
-					</c:forEach>
-				</div>
-			
-		</div>
-	</div>
-	</section>
+         <div class="row1">
+               <h3>최근 본 식당</h3>
+               <c:forEach var="vo" items="${cList }" varStatus="s">
+                  <c:if test="${s.index<6 }">
+                     <div class="col-md-2">
+                        <div class="thumbnail">
+                           <a href="resDetail_before.do?no=${vo.no}"> <img
+                              src="${vo.poster }" alt="Lights" style="width: 100%"
+                              class="img-rounded">
+                              <div class="caption">
+                                 <p style="font-size: 8pt">${vo.title }</p>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+                  </c:if>
+               </c:forEach>
+            </div>
+         
+      </div>
+   </div>
+   </section>
 </body>
 </html>
