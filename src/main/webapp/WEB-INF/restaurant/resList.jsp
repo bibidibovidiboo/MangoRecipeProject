@@ -10,14 +10,13 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
-.row {
-	margin-bottom: 40px;
+.box {
+	margin-top: 40px;
 }
 
 </style>
 </head>
 <body>
-
 	<section class="shop spad">
 	<div class="container">
 		<div class="shop__option">
@@ -63,7 +62,7 @@
 		
 				<!-- ---------------------------------- 식당 출력 --------------------------------------------------------------------------- -->
 	 	<div class="container">
-				<div class="row1">
+				<div class="box">
 					<c:forEach var="vo" items="${list }">
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="product__item">
