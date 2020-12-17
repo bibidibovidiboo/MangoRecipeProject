@@ -4,17 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.dao.RestaurantDAO;
 import com.sist.vo.RestaurantVO;
+
+
 @RestController
 //코틀린에서 데이터 받아서 처리 
 @RequestMapping("food/")
@@ -22,13 +21,21 @@ public class RestaurantRestController {
 	   @Autowired
 	   private RestaurantDAO dao;
 	   
-	   
-	   @RequestMapping(value="kotlin_food.do",produces="text/plain;charset=UTF-8")
-	   public String food_kotlin_food()
+	   @RequestMapping(value="kotlin_res.do",produces="text/plain;charset=UTF-8")
+	   public String kotlin_res(String page)
 	   {
 		   String result="";
+		   if(page==null) // 첫화면 => default 
+			   page="1";
+		   int curpage=Integer.parseInt(page);
+			int rowSize=12;
+			int start=(rowSize*curpage)-(rowSize-1);
+			int end=rowSize*curpage;
+			Map map=new HashMap();
+			map.put("start", start);
+			map.put("end", end);
 			try{
-			   List<RestaurantVO> list=dao.restaurantCateListData();
+			   List<RestaurantVO> list=dao.foodCateListData(map);
 			   //list에 존재하는 데이터를 json으로 변경
 			   JSONArray arr=new JSONArray();
 			   for(RestaurantVO vo:list)
@@ -43,18 +50,19 @@ public class RestaurantRestController {
 				   arr.add(obj);
 			   }
 			   result=arr.toJSONString();
-		   }catch (Exception ex) {ex.printStackTrace();}
+		   }catch (Exception ex) {}
 		   return result;
 	   }
 	   
-	   @RequestMapping(value="kotlin_detail.do",produces="text/plain;charset=UTF-8")
+	   @RequestMapping(value="kotlin_resdetail.do",produces="text/plain;charset=UTF-8")
 	   public String food_kotlin_detail(int no)
 	   {
 		   String result="";
 		   try{
-			   RestaurantVO vo=dao.restaurantDetailData(no);
+			   RestaurantVO vo=dao.foodDetailData(no);
 			   JSONObject obj=new JSONObject();
-			   obj.put("cateno", vo.getCateno());
+		//	   obj.put("cateno", vo.getCateno());
+			   obj.put("no", vo.getNo());
 			   obj.put("title", vo.getTitle());
 			   obj.put("score", vo.getScore());
 			   obj.put("poster", vo.getPoster());
