@@ -30,8 +30,6 @@
 <link rel="stylesheet" href="../css/style.css" type="text/css">
 <link rel="stylesheet" href="../css/custom.css" type="text/css">
 
-<!-- kakao api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f40375643f0a41df8b2401ad0739717&libraries=services"></script>
 </head>
 
 <body>
@@ -56,7 +54,8 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/jquery.nicescroll.min.js"></script>
 <script src="../js/main.js"></script>
-
+<!-- kakao api -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f40375643f0a41df8b2401ad0739717&libraries=services"></script>
     <script type="text/javascript">
     $(function(){
     	$('#logBtn').click(function(){
