@@ -139,7 +139,8 @@
 				</table>
 			</div>
 			<div class="modal-footer">
-					<a href="${kakaoUrl }"><img src="../img/kakao_login.png" alt=""></a>
+			<a href="${kakaoUrl }"><img src="../img/kakao_login.png" alt=""></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type=button class="btn btn-success" value="로그인" id="logBtn">
 				<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			</div>

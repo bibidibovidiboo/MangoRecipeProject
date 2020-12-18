@@ -97,7 +97,7 @@ h2{
 		                      <img src="${vo.img }" style="width: 150px; height: 150px;">
 		                    </div>
 		                    <div class="weatherList">
-		                      <a href="weather_detail.do?rno=${vo.rno }" style="color: black;"><font style="font-weight: border; font-size: 14pt;">${vo.title }</font></a><br><br>
+		                      <a href="../recipe/detail.do?rno=${vo.rno }" style="color: black;"><font style="font-weight: border; font-size: 14pt;">${vo.title }</font></a><br><br>
 		                      <img src="../img/icon/cooktime.png" style="width:7%">&nbsp;${vo.cooktime }&nbsp;&nbsp;&nbsp;&nbsp;
 		                      <img src="../img/icon/level.png" style="width:7%">&nbsp;${vo.lvl }
 		                    </div>

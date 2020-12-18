@@ -33,7 +33,7 @@ private FridgeDAO dao;
 
 	// 냉장고에 넣기
 	//==================================================================================================
-	@GetMapping("ingre_in.do")
+	@RequestMapping("ingre_in.do")
 	public String fridge_ingre_in(String ingre_name,HttpSession session)
 	{
 		String id = (String) session.getAttribute("id");
@@ -54,7 +54,7 @@ private FridgeDAO dao;
 			System.out.println("데이터 들어감");
 			
 			result="<script charset=\"utf-8\">"
-					 +"alert(\"등록되었습니다.\");"
+					 +"alert(\"registered\");"
 					 +"location.reload();"
 					 +"</script>";
 	
@@ -63,7 +63,7 @@ private FridgeDAO dao;
 		else
 		{
 			result="<script charset=\"utf-8\">"
-					 +"alert(\"이미 등록된 재료입니다.\");"
+					 +"alert(\"already registered\");"
 					 +"history.back();"
 					 +"location.reload();"
 					 +"</script>";
@@ -77,7 +77,7 @@ private FridgeDAO dao;
 	// 관심상품에 넣기
 		//==================================================================================================
 	//ingre_heart.do?ingre_name
-		@GetMapping("ingre_heart.do")
+		@RequestMapping("ingre_heart.do")
 		public String favorite_ingre_in(String ingre_name,HttpSession session)
 		{
 			String id = (String) session.getAttribute("id");
@@ -98,7 +98,7 @@ private FridgeDAO dao;
 				System.out.println("데이터 들어감");
 				
 				result="<script charset=\"utf-8\">"
-						 +"alert(\"등록되었습니다.\");"
+						 +"alert(\"registered\");"
 						 +"location.reload();"
 						 +"</script>";
 		
@@ -107,7 +107,7 @@ private FridgeDAO dao;
 			else
 			{
 				result="<script charset=\"utf-8\">"
-						 +"alert(\"이미 등록된 재료입니다.\");"
+						 +"alert(\"already registered\");"
 						 +"history.back();"
 						 +"location.reload();"
 						 +"</script>";
@@ -119,7 +119,7 @@ private FridgeDAO dao;
 	
 	// 냉장고에서 빼기
 	//==================================================================================================	
-	@GetMapping("ingre_out.do")
+	@RequestMapping("ingre_out.do")
 	public String fridge_ingre_out(String ingre_name,HttpSession session)
 	{
 		String id = (String) session.getAttribute("id");
@@ -140,7 +140,7 @@ private FridgeDAO dao;
 			System.out.println("데이터 삭제됨");
 			
 			result="<script>"
-					 +"alert(\"삭제되었습니다.\");"
+					 +"alert(\"successful\");"
 					 +"location.reload();"
 					 +"</script>";
 	
@@ -149,7 +149,7 @@ private FridgeDAO dao;
 		else
 		{
 			result="<script>"
-					 +"alert(\"등록되어 있지 않은 재료입니다.\");"
+					 +"alert(\"Not registered\");"
 					 +"history.back();"
 					 +"location.reload();"
 					 +"</script>";
@@ -161,7 +161,7 @@ private FridgeDAO dao;
 	
 	// 냉장고에서 빼기
 		//==================================================================================================	
-		@GetMapping("heard_out.do")
+		@RequestMapping("heard_out.do")
 		public String favorite_ingre_out(String ingre_name,HttpSession session)
 		{
 			String id = (String) session.getAttribute("id");
@@ -182,7 +182,7 @@ private FridgeDAO dao;
 				System.out.println("데이터 삭제됨");
 				
 				result="<script>"
-						 +"alert(\"삭제되었습니다.\");"
+						 +"alert(\"successful.\");"
 						 +"location.reload();"
 						 +"</script>";
 		
@@ -191,7 +191,7 @@ private FridgeDAO dao;
 			else
 			{
 				result="<script>"
-						 +"alert(\"등록되어 있지 않은 재료입니다.\");"
+						 +"alert(\"Not registered\");"
 						 +"history.back();"
 						 +"location.reload();"
 						 +"</script>";

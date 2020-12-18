@@ -36,6 +36,8 @@ public class MainController {
       mainRestaurant(model);
       mainRecipe(model);
       mainfind_recipe(model);
+      String kakaoUrl = KakaoLoginController.getAuthorizationUrl();
+      model.addAttribute("kakaoUrl",kakaoUrl);
       mainweatherDetailData(model);
       return "main";
    }

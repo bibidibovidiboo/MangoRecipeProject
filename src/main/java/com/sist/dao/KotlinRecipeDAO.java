@@ -20,7 +20,7 @@ public class KotlinRecipeDAO {
 	   try
 	   {
 		   mc=new MongoClient("localhost",27017);
-		   db=mc.getDB("myMongo");
+		   db=mc.getDB("mydb");
 		   dbc=db.getCollection("recipe");
 	   }catch(Exception ex){}
    }
