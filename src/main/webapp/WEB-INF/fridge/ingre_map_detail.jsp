@@ -12,7 +12,7 @@
 
 
 	<table class="table">
-		<tr>
+		<tr style="background-color: antiquewhite;">
 			<th width="15%">특산물</th>
 			<th width="15%">지역</th>
 			<th width="20%">주출하시기</th>
