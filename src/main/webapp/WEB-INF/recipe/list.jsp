@@ -9,10 +9,31 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__text">
+                        <h2>Recipe</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__links">
+                        <a href="../index.jsp">Home</a>
+                        <span>Recipe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
  <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container">
-            <div class="shop__option">
+            <!-- <div class="shop__option">
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
                         <div class="shop__option__search">
@@ -42,7 +63,7 @@
                         </div>
                     </div> 
                 </div>
-            </div>
+            </div> -->
             
             
             <div class="row">
@@ -56,7 +77,8 @@
                         </div>
                         <div class="product__item__text">
                          
-                            <h6><a href="detail_before.do?rno=${vo.rno }">${vo.title }</a></h6>
+                            <h6><a href="../recipe/detail_before.do?rno=${vo.rno }">${vo.title }</a></h6>
+                            
                             <!-- <div class="product__item__price">$32.00</div> -->
                             <!-- <div class="cart_add">
                                 <a href="#">Add to cart</a>

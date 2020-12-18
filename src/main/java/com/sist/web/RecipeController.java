@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sist.dao.*;
+import com.sist.vo.RecipeCookVO;
 import com.sist.vo.RecipeIngreVO;
 import com.sist.vo.RecipeVO;
 
@@ -79,10 +80,26 @@ public class RecipeController {
 	
 	@RequestMapping("recipe/detail.do")
 	public String recipe_detial(int rno,Model model){
+		// 레시피 개요 검색
 		RecipeVO vo=dao.recipeDetailData(rno);
-//		RecipeIngreVO ivo = dao.recipeIngreData(rno);
 		model.addAttribute("vo",vo);
-//		model.addAttribute("ivo",ivo);
+		//System.out.println(rno);
+		String title= dao.recipeTitle(rno);
+		
+		//System.out.println(title);
+		List<RecipeCookVO> cList= dao.recipeCookData(title);
+		for(RecipeCookVO vo2:cList)
+		{
+			
+			//System.out.println(vo2.getCook());
+		}
+		
+		
+		model.addAttribute("cList",cList);
+		
+		List<RecipeIngreVO> iList= dao.recipeIngreData(title);
+		model.addAttribute("iList",iList);
+		
 		return "recipe/detail";
 	}
 	

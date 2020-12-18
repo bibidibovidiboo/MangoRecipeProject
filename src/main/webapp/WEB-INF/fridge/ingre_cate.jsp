@@ -82,12 +82,11 @@ $(function(){
 <body>
 	<!-- iList -->
 	<table class="table">
-		<tr>
-			<th width=40%>식재료명</th>
+		<tr style="background-color: antiquewhite;">
+			<th width=30%>식재료명</th>
 			<th width=20% class="text-center">냉장고 추가</th>
 			<th width=20% class="text-center">냉장고 삭제</th>
-			<th width=20% class="text-center">관심재료 등록</th>
-
+			<th width=30% class="text-center">관심재료 등록</th>
 		</tr>
 		<tbody>
 			<c:forEach var="ivo" items="${iList }" varStatus="ss">
@@ -111,6 +110,8 @@ $(function(){
 							<a href="../fridge/ingre_heart.do?ingre_name=${ivo.ingre_name}" class="btn btn-lg btn-warning" style="font-size: 10pt">♥</a>
 						</div>
 					</td>
+					
+					
 					</c:if>
 					
 					<c:if test="${sessionScope.id==null }">
@@ -118,6 +119,7 @@ $(function(){
 						<!-- rowspan="${fn:length(iList) }" -->
 					</c:if>
 				</tr>
+				
 			</c:forEach>
 		</tbody>
 	</table>

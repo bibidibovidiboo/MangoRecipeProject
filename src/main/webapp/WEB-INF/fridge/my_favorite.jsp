@@ -89,6 +89,11 @@ $(function(){
     <!-- Blog Section Begin -->
     <section class="blog spad">
         <div class="container">
+        	<c:if test="${sessionScope.id!=null }">
+        
+        
+        
+        
             <div class="row">
 				<div class="col-lg-4">
                     <div class="blog__sidebar">
@@ -117,7 +122,7 @@ $(function(){
           
                 <!-- 카테고리별 재료 리스트 Start -->
 	                <div class="blog__sidebar__item">
-	                            <h5>최저가 리스트 </h5>
+	                            <h5>최저가 TOP 10 </h5>
 
 
 						
@@ -154,6 +159,10 @@ $(function(){
                 
                 
             </div>
+            </c:if>
+            <c:if test="${sessionScope.id==null }">
+            	<center>로그인 후 사용 가능합니다.</center>
+            </c:if>
         </div>
     </section>
     <!-- Blog Section End -->
