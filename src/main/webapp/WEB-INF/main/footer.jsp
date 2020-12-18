@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.copyright {
+    margin-top: 56px;
+}
+</style>
 </head>
 <body>
     <!-- Footer Section Begin -->
