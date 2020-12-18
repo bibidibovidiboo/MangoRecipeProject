@@ -9,11 +9,15 @@
 <style type="text/css">
 .header__logo {
     left: 47%;
-    top: 22px;
+    top: 16px;
     width: 210px;
 }
 .header__menu ul li a {
 	font-weight: 400;
+}
+.header__top__inner {
+    height: 90px;
+    padding-top: 31px;
 }
 </style>
 </head>
