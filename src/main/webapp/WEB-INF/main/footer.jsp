@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .copyright {
-    margin-top: 56px;
+    margin-top: 40px;
 }
 </style>
 </head>

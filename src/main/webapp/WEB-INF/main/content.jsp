@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6{
     margin-bottom: 13px;
 }
 h3{
-	margin: 63px 0 32px;
+	margin: 68px 0 32px;
 }
 .product__item__text h6,.product__item__text h6 a {
     color: #585858;
@@ -78,6 +78,9 @@ h3{
 }
 .breadcrumb-option {
     padding-top: 0px;
+}
+.b_tit {
+    margin: 58px 0 32px;
 }
 </style>
 </head>
@@ -119,7 +122,7 @@ h3{
    <!-- 레시피 -->
 
    <div class="container" id="recipe">
-      <h3>BEST 레시피</h3>
+      <h3 class="b_tit">BEST 레시피</h3>
       <div class="row">
          <c:forEach var="vo" items="${rdList }">
             <div class="col-lg-3 col-md-6 col-sm-6">
