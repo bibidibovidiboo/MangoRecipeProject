@@ -6,39 +6,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Cake Template">
-    <meta name="keywords" content="Cake, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MR</title>
+<meta name="description" content="Cake Template">
+<meta name="keywords" content="Cake, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>MR</title>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+<!-- Css Styles -->
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="../css/flaticon.css" type="text/css">
+<link rel="stylesheet" href="../css/barfiller.css" type="text/css">
+<link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="../css/style.css" type="text/css">
+<link rel="stylesheet" href="../css/custom.css" type="text/css">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="../css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <style>
-    #myModal{
-    	z-index:500000;
-    }
-    .table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: 1px solid white;
-	}
-    </style>
 </head>
 
 <body>
@@ -63,7 +54,8 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/jquery.nicescroll.min.js"></script>
 <script src="../js/main.js"></script>
-
+<!-- kakao api -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f40375643f0a41df8b2401ad0739717&libraries=services"></script>
     <script type="text/javascript">
     $(function(){
     	$('#logBtn').click(function(){
@@ -105,9 +97,7 @@
     				{
     					alert("로그인 되었습니다");
     					$('#myModal').modal("hide");
-    					//location.href="../main/main.do";
-    					//parent.location.reload();
-    					window.top.location.reload(true);
+    					location.href="../main/main.do";
     					$('#id').val("");
     					$('#pwd').val("");
     					$('#result').text("");
@@ -120,45 +110,43 @@
     });
     </script>
 
+</body>
 <div id="myModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4><b>Login</b></h4>
+				<h4>Login</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
-			<div class="modal-body" style="padding-bottom: 0px">
-			
+			<div class="modal-body">
 				<table class="table">
 					<tr>
-						<td width=35% class="text-right"><b>ID</b></td>
-						<td width=65%><input type=text id="id" class="input-sm" size=15></td>
-					</tr>
-					
-					
-					<tr>
-						<td width=35% class="text-right"><b>PW</b></td>
-						<td width=65%><input type=password id="pwd" class="input-sm" size=15></td>
+						<td width=25% class="text-right">ID</td>
+						<td width=75%><input type=text id="id" class="input-sm"
+							size=15></td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="2" height="0.1"><span style="color: red" id="result"></span></td>
+						<td width=25% class="text-right">PW</td>
+						<td width=75%><input type=password id="pwd" class="input-sm"
+							size=15></td>
+					</tr>
+					<tr>
+						<td class="text-center" colspan="2"><span style="color: red"
+							id="result"></span></td>
 					</tr>
 				</table>
 			</div>
 			<div class="modal-footer">
-				<a href="${kakaoUrl }"><img src="../img/kakao_login.png" alt=""></a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type=button class="btn btn-primary" value="Login" id="logBtn">
-				<button type="button" class="btn" data-dismiss="modal" style="background-color: gray;color:white" >Close</button>
-				
-				
+				<input type=button class="btn btn-success" value="로그인" id="logBtn">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 
 	</div>
 </div>
+</html>
 
 </body>
 

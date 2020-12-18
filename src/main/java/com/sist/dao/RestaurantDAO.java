@@ -23,10 +23,25 @@ public class RestaurantDAO {
 	
 	// kotlin
 	
-	public List<RestaurantVO> restaurantCateListData()
+	/*public List<RestaurantVO> foodCateListData()
 	{
-		return mapper.restaurantCateListData();
-	}
+		return mapper.foodCateListData();
+	}*/
 
+	public List<RestaurantVO> foodCateListData(Map map)
+	{
+		return mapper.foodCateListData(map);
+	}
+	
+	 public RestaurantVO foodDetailData(int no)
+	   {
+		   return mapper.foodDetailData(no);
+	   }
+	   
+	   //추천
+	   public List<RestaurantVO> foodHouseListData()
+	   {
+		   return mapper.foodHouseListData();
+	   }
 
 }

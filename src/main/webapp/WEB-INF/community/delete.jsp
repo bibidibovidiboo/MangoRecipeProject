@@ -7,29 +7,44 @@
 <title>Insert title here</title>
 <style type="text/css">
 .delete-box {
-	margin: 44px auto 20px;
+	padding: 112px 0 92px;
+}
+.cBtn {
+	background: #111;
+    color: #fff;
+    border-radius: 0;
+    font-weight: 500;
+    padding: 8px 20px;
+    margin-right: 1px;
+}
+h4{
+	margin-bottom: 20px;
+    font-size: 18px;
+    color: #111;
+    font-weight: 300;
+}
+.form-control {
+	margin-bottom: 21px;
+}
+form {
+	margin: 0 auto;
 }
 </style>
 </head>
 <body>
-   <div class="container">
+   <div class="container delete-box" id="noto">
     <div class="row">
-      <!-- <h1>삭제하기</h1> -->
-      <form action="delete_ok.do" method="post" class="delete-box">
-      <table class="table delete-box">
-       <tr>
-         <td>
-          비밀번호:  <input type=password name=pwd size=15 class="input-sm">
+     
+      <form action="delete_ok.do" method="post">
+      	<h4>글을 삭제하시겠습니까?</h4>
+      	<div>
+        	<input type=password name=pwd size=15 class="form-control" placeholder="비밀번호를 입력하세요">
             <input type=hidden name=no value="${no }">
-         </td>
-       </tr>
-       <tr>
-         <td class="text-center">
-           <input type=submit value="삭제">
-           <input type=button value="취소" onclick="javascript:history.back()">
-         </td>
-       </tr>
-      </table>
+        </div>
+        <div class="text-center">
+           <button type=submit value="삭제" class="cBtn">삭제</button>
+           <button type=button value="취소" class="cBtn" onclick="javascript:history.back()">취소</button>
+		</div>
       </form>
     </div>
    </div>

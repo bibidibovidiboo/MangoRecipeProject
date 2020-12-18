@@ -37,8 +37,6 @@ public class MainController {
       mainRecipe(model);
       mainfind_recipe(model);
       mainweatherDetailData(model);
-      String kakaoUrl = KakaoLoginController.getAuthorizationUrl();
-      model.addAttribute("kakaoUrl",kakaoUrl);
       return "main";
    }
 
@@ -48,9 +46,6 @@ public class MainController {
        session.invalidate();
        return "redirect:main.do";
     }
-   
-   
-   
    //레스토랑
    public void mainRestaurant(Model model) {
       List<RestaurantVO> rList = mdao.mainGetRestaurantListData();
