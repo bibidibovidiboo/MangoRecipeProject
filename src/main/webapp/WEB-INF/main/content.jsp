@@ -203,7 +203,7 @@ h3{
 	                  style="height: 150px; background-color: #fff;">
 	                  <img src="${vo.img }"
 	                     style="width: 150px; height: 150px; margin-right: 20px;"> <a
-	                     href="../recommand/weather_detail.do?rno=${vo.rno }"
+	                     href="../recipe/detail_before.do?rno=${vo.rno }"
 	                     style="color: black; font-weight: border;">
 	                     ${fn:length(vo.title)>23?fn:substring(vo.title,0,23)+="...":vo.title  }</a>
 	               </div>
